@@ -219,7 +219,7 @@ function EntityForm({ initial, resource, name, onSaved, onDirtyChange, disabled 
         }}>
             {readOnly && <Alert>Опубликованная версия доступна только для чтения. Создайте новую версию.</Alert>}
             {!initial && name === 'events' && <section className="stack new-event-cover"><h2>Обложка мероприятия</h2><ImagePicker value={cover} onChange={value => { setCover(value); setDirty(true); task.setError(null); }} disabled={task.busy} error={task.error} /><small>Можно добавить сейчас или после создания мероприятия.</small></section>}
-            {createdRecord && name === 'events' && task.error && <Alert>Мероприятие уже создано. Не удалось завершить загрузку обложки; повторная попытка не создаст второе мероприятие. <Link className="text-link" href={`/ru/staff/events/${createdRecord.id}#event-cover`}>Открыть сохранённую карточку →</Link></Alert>}
+            {createdRecord && name === 'events' && Boolean(task.error) && <Alert>Мероприятие уже создано. Не удалось завершить загрузку обложки; повторная попытка не создаст второе мероприятие. <Link className="text-link" href={`/ru/staff/events/${createdRecord.id}#event-cover`}>Открыть сохранённую карточку →</Link></Alert>}
             <StaffFields fields={resource.fields} values={values} setValue={(key, value) => {
                 setValues({ ...values, [key]: value });
                 setDirty(true);
