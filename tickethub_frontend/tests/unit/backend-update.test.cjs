@@ -1,7 +1,7 @@
 const {test,beforeEach,after}=require('node:test');
 const assert=require('node:assert/strict');
 const {lib,json}=require('./helpers.cjs');
-const {api,readResponse,ApiError}=lib('api/client');
+const {api,readResponse}=lib('api/client');
 const errors=lib('api/error-details'), E=lib('seat-editor'), images=lib('image-upload');
 const {editorApi}=lib('api/editor');
 const {externalEventsApi,portalBiletUrl}=lib('api/external-events');

@@ -11,7 +11,7 @@ function type(s = {}) {
   else if (s.type === 'object' || s.properties) {
     const props = Object.entries(s.properties || {}).map(([k,v]) => `${JSON.stringify(k)}${(s.required || []).includes(k) ? '' : '?'}: ${type(v)};`);
     if (s.additionalProperties && props.length === 0) out = `Record<string, ${s.additionalProperties === true ? 'unknown' : type(s.additionalProperties)}>`;
-    else out = `{ ${props.join(' ')} }`;
+    else out = props.length ? `{ ${props.join(' ')} }` : 'Record<string, never>';
   } else out = ({integer:'number', number:'number', boolean:'boolean', string:'string', null:'null'})[s.type] || 'unknown';
   return s.nullable ? `(${out}) | null` : out;
 }

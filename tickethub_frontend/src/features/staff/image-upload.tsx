@@ -21,21 +21,21 @@ export function ImagePicker({ value, onChange, image, source = '', kind = 'event
     const [preview, setPreview] = useState(''), [info, setInfo] = useState<ImageInfo | null>(null);
     const [localError, setLocalError] = useState<unknown>(null), [checking, setChecking] = useState(false);
     const [failedPreview, setFailedPreview] = useState(false);
-    const request = useRef(0), fileInput = useRef<HTMLInputElement>(null);
+    const fileInput = useRef<HTMLInputElement>(null);
     useEffect(() => { setFailedPreview(false); if (image) setMode('file'); }, [image]);
     useEffect(() => { if (!value) { setMode('file'); if (fileInput.current) fileInput.current.value = ''; } }, [value]);
     const file = value?.mode !== 'url' ? value?.file : undefined;
     useEffect(() => {
-        const current = ++request.current;
         if (!file) { setPreview(''); setInfo(null); setChecking(false); setLocalError(null); return; }
         let url = '';
+        let disposed = false;
         setChecking(true); setLocalError(null); setInfo(null); setPreview(''); setFailedPreview(false);
         inspectImage(file).then(result => {
-            if (current !== request.current) return;
+            if (disposed) return;
             if (result.previewSafe) { url = URL.createObjectURL(file); setPreview(url); }
             setInfo(result);
-        }).catch(caught => { if (current === request.current) setLocalError(caught); }).finally(() => { if (current === request.current) setChecking(false); });
-        return () => { request.current++; if (url) URL.revokeObjectURL(url); };
+        }).catch(caught => { if (!disposed) setLocalError(caught); }).finally(() => { if (!disposed) setChecking(false); });
+        return () => { disposed = true; if (url) URL.revokeObjectURL(url); };
     }, [file]);
     const current = failedPreview ? null : preview || (!value ? mediaPath(image) : null);
     const reported = localError ?? error, details = reported instanceof ApiError ? reported.details : {};

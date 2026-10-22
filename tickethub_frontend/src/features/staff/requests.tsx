@@ -23,7 +23,8 @@ export function StaffRequestList() {
     const data = useApi<PaginatedStaffRequest>('staff/ticket-requests/?' + query);
     function update(k: string, v: string) {
         const q = new URLSearchParams(params);
-        v ? q.set(k, v) : q.delete(k);
+        if (v) q.set(k, v);
+        else q.delete(k);
         q.delete('page');
         router.push('?' + q);
     }

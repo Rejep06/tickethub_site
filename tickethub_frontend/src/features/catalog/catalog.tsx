@@ -29,7 +29,8 @@ export function Catalog({ initial, initialPath, categories, venues }: { initial:
         if (search === last.current) return;
         const timer = setTimeout(() => {
             last.current = search; const next = new URLSearchParams(params.toString()); next.delete('page');
-            search.trim() ? next.set('q', search.trim()) : next.delete('q');
+            if (search.trim()) next.set('q', search.trim());
+            else next.delete('q');
             router.push(`/${lang}/events${next.size ? '?' + next : ''}`, { scroll: false });
         }, 300);
         return () => clearTimeout(timer);
