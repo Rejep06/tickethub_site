@@ -1,7 +1,7 @@
 /** Only parameters actually accepted by events/views.py. Dates use [from,to). */
 export function catalogPath(search: URLSearchParams): string {
     const p = new URLSearchParams();
-    for (const k of ['q', 'category', 'city', 'venue', 'participant', 'date_from', 'date_to', 'status', 'ordering', 'page']) {
+    for (const k of ['q', 'category', 'kind', 'city', 'venue', 'participant', 'date_from', 'date_to', 'status', 'ordering', 'page', 'page_size']) {
         const v = search.get(k);
         if (v)
             p.set(k, v);
@@ -25,4 +25,11 @@ export function exclusiveDateToInclusive(value: string): string {
     if (!Number.isFinite(date.getTime())) return '';
     date.setUTCDate(date.getUTCDate() - 1);
     return date.toISOString().slice(0, 10);
+}
+
+/** Homepage and category landing show the same published catalogue as /events. */
+export function homeCatalogPath(kind: 'ALL' | 'SPORT' | 'CONCERT' | 'OTHER' = 'ALL'): string {
+    const query = new URLSearchParams({ ordering: 'start_at', page_size: '6' });
+    if (kind !== 'ALL') query.set('kind', kind);
+    return catalogPath(query);
 }
