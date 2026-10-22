@@ -1,0 +1,9 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<p>{{ object }}</p>
+<form method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Сохранить операцию">
+</form>
+<p>Это фиксация факта или решения. Сайт не списывает и не возвращает деньги автоматически.</p>
+{% endblock %}

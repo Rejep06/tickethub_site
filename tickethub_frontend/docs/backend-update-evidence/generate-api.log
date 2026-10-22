@@ -1,0 +1,5 @@
+
+> tickethub-frontend@1.0.0 generate:api
+> node scripts/generate-api.mjs
+
+Generated 186 API types

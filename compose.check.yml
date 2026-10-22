@@ -1,0 +1,28 @@
+# Isolated test database, never the production database/volume.
+name: tickethub-check
+services:
+  testdb:
+    image: ${POSTGRES_IMAGE:-postgres:17-bookworm}
+    environment: {POSTGRES_DB: tickethub_test, POSTGRES_USER: tickethub_test, POSTGRES_PASSWORD: local-test-only}
+    tmpfs: [/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U tickethub_test -d tickethub_test]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  tests:
+    build:
+      context: ./tickethub_backend
+      dockerfile: infra/docker/Dockerfile
+      args:
+        PYTHON_IMAGE: ${PYTHON_IMAGE:-python:3.13-slim-bookworm}
+        REQUIREMENTS_FILE: ${REQUIREMENTS_FILE:-requirements.lock}
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.test
+      DJANGO_SECRET_KEY: isolated-test-secret-not-for-production-12345678901234567890
+      POSTGRES_DB: tickethub_test
+      POSTGRES_USER: tickethub_test
+      POSTGRES_PASSWORD: local-test-only
+      POSTGRES_HOST: testdb
+    depends_on: {testdb: {condition: service_healthy}}
+    command: [sh, -c, 'python manage.py makemigrations --check --dry-run && python manage.py test --noinput']

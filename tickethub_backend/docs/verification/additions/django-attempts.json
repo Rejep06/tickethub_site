@@ -1,0 +1,26 @@
+[
+  {
+    "command": "python backend/manage.py makemigrations --check --dry-run",
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 13, in <module>\n    main()\n    ~~~~^^\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 8, in main\n    from django.core.management import execute_from_command_line\nModuleNotFoundError: No module named 'django'\n",
+    "status": "BLOCKED_MISSING_DJANGO"
+  },
+  {
+    "command": "python backend/manage.py migrate --plan",
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 13, in <module>\n    main()\n    ~~~~^^\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 8, in main\n    from django.core.management import execute_from_command_line\nModuleNotFoundError: No module named 'django'\n",
+    "status": "BLOCKED_MISSING_DJANGO"
+  },
+  {
+    "command": "python backend/manage.py check",
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 13, in <module>\n    main()\n    ~~~~^^\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 8, in main\n    from django.core.management import execute_from_command_line\nModuleNotFoundError: No module named 'django'\n",
+    "status": "BLOCKED_MISSING_DJANGO"
+  },
+  {
+    "command": "python backend/manage.py test venues external_events --verbosity=2",
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 13, in <module>\n    main()\n    ~~~~^^\n  File \"/mnt/data/tickethub_portalbilet_work/tickethub/backend/manage.py\", line 8, in main\n    from django.core.management import execute_from_command_line\nModuleNotFoundError: No module named 'django'\n",
+    "status": "BLOCKED_MISSING_DJANGO"
+  }
+]

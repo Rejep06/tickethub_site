@@ -1,0 +1,8 @@
+Command: python manage.py check
+Traceback (most recent call last):
+  File "/mnt/data/backend-source/tickethub/backend/manage.py", line 13, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/data/backend-source/tickethub/backend/manage.py", line 8, in main
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'

@@ -1,0 +1,18 @@
+const {test,beforeEach}=require('node:test');const assert=require('node:assert/strict');const {lib,MemoryStore,ids}=require('./helpers.cjs');
+const {safeNext,mediaPath,localized}=lib('safe');const {validDraft,saveDraft,loadDraft}=lib('drafts');const {catalogPath}=lib('catalog');const {acceptedDocuments}=lib('consents');
+beforeEach(()=>{global.sessionStorage=new MemoryStore();});
+test('Safe return preserves locale, object and query',()=>assert.equal(safeNext('/en/checkout?hold=abc'),'/en/checkout?hold=abc'));
+for(const url of ['https://evil.example','//evil.example','/ru/../../ops/','/ru/%5cevil','/ru/%0d%0aX','/bad/account'])test(`Unsafe return rejected: ${url}`,()=>assert.equal(safeNext(url),'/ru/account'));
+test('Media URLs are forced through the same-origin media path',()=>{assert.equal(mediaPath('http://localhost:8000/media/a.jpg'),'/media/a.jpg');assert.equal(mediaPath('/media/a.jpg'),'/media/a.jpg');assert.equal(mediaPath('javascript:alert(1)'),null);assert.equal(mediaPath('https://evil.example/private/ticket.pdf'),null);});
+test('Content translation fallback uses supplied RU content only',()=>{assert.equal(localized({title_ru:'A',title_en:'B'},'title','en'),'B');assert.equal(localized({title_ru:'A'},'title','en'),'A');});
+const draft={eventId:ids.event,slug:'demo-test',selection:{mode:'CATEGORY',offer_id:ids.offer,quantity:2},createdAt:123};
+test('Selection survives reload without storing contacts',()=>{saveDraft({...draft,email:'must-not-persist@example.invalid',otp:'123456'});assert.deepEqual(loadDraft(),draft);assert.doesNotMatch(sessionStorage.getItem('th.selection'),/email|otp|123456/);});
+test('Wrong ids and excessive quantities are not trusted',()=>{assert.equal(validDraft({...draft,eventId:'oops'}),false);assert.equal(validDraft({...draft,selection:{...draft.selection,quantity:11}}),false);assert.equal(validDraft({...draft,createdAt:NaN}),false);});
+test('Duplicate seats are not a valid draft',()=>assert.equal(validDraft({...draft,selection:{mode:'SEATS',seat_ids:[ids.seat,ids.seat]}}),false));
+test('Malformed stored JSON does not crash checkout',()=>{sessionStorage.setItem('th.selection','{');assert.equal(loadDraft(),null);});
+test('Catalog never invents unsupported backend filters',()=>{const path=catalogPath(new URLSearchParams({category:ids.event,min_price:'10',in_stock:'true',q:'football'}));assert.match(path,/category=/);assert.match(path,/q=football/);assert.doesNotMatch(path,/min_price|in_stock/);});
+test('Catalog query preserves dates and paging on reload',()=>{const q=new URLSearchParams('date_from=2026-10-01T00%3A00%3A00Z&page=2');assert.equal(catalogPath(q),'events/?date_from=2026-10-01T00%3A00%3A00Z&page=2&ordering=start_at');});
+test('Consent sends precisely the checked document versions',()=>assert.deepEqual(acceptedDocuments({offer:3,privacy:2},{offer:3,privacy:2,old:1}),{offer:3,privacy:2}));
+test('Consent cannot silently accept a newly published version',()=>assert.throws(()=>acceptedDocuments({offer:4},{offer:3}),/CONSENT_REQUIRED/));
+test('Unchecked legal document blocks submission',()=>assert.throws(()=>acceptedDocuments({offer:1},{}),/CONSENT_REQUIRED/));
+test('No invented consents when backend has none configured',()=>assert.deepEqual(acceptedDocuments({},{}),{}));

@@ -1,0 +1,81 @@
+/* Additive staff UI. Uses the existing light/dark tokens; no new UI framework. */
+.api-error-details { display: grid; gap: 6px; margin: 10px 0; overflow-wrap: anywhere; font-size: .92rem; }
+.break-word { overflow-wrap: anywhere; min-width: 0; }
+.staff-cover-thumb { width: 96px; height: 60px; object-fit: cover; border-radius: 10px; background: var(--surface-soft); }
+.staff-cover-empty { display: grid; place-content: center; width: 96px; min-height: 60px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--secondary); font-size: 12px; }
+.image-picker { min-width: 0; }
+.cover-dropzone { padding: 16px; border: 1.5px dashed var(--line-strong); border-radius: 18px; background: var(--surface-soft); display: grid; gap: 18px; transition: border-color .15s; }
+.cover-dropzone:focus-within, .cover-dropzone:hover { border-color: var(--focus); }
+.cover-preview { position: relative; border-radius: 12px; overflow: hidden; min-height: 160px; height: clamp(180px, 28vw, 350px); background: var(--muted); }
+.cover-preview-event { aspect-ratio: 16/9; }
+.cover-preview-label { position: absolute; top: 12px; left: 12px; }
+.cover-preview-label .badge { box-shadow: var(--shadow-sm); }
+.cover-placeholder { display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; padding: 32px 16px; }
+.cover-placeholder > svg { color: var(--secondary); }
+.cover-placeholder span { color: var(--secondary); max-width: 390px; }
+.selected-image-info { padding: 12px 0; }
+.upload-success { display: flex; gap: 10px; color: var(--green); align-items: flex-start; }
+.new-event-cover { padding-bottom: 30px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
+.import-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; }
+.import-help { background: var(--accent-soft); }
+.import-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 14px; padding: 18px; gap: 20px; }
+.import-metrics > div { display: grid; gap: 4px; }
+.import-metrics strong { font-size: 28px; letter-spacing: -.04em; }
+.import-metrics span { font-size: 13px; color: var(--secondary); }
+.import-warnings { display: grid; gap: 14px; border-left: 3px solid var(--warning-line); padding-left: 16px; overflow-wrap: anywhere; }
+.import-warnings strong { font: 11px ui-monospace, monospace; color: var(--secondary); }
+.import-warnings p { font-size: 14px; margin-top: 4px; }
+.import-date-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.import-date-list > div { display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap; background: var(--surface-soft); border-radius: 12px; padding: 14px; }
+.import-date-list small { flex-basis: 100%; }
+.diagnostic-panel { border: 1px solid var(--line); border-radius: 12px; padding: 16px; max-width: 100%; }
+.diagnostic-panel summary, .plan-inspector summary { cursor: pointer; font-weight: 650; }
+.diagnostic-panel[open] summary { margin-bottom: 16px; }
+.diagnostic-panel pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 520px; overflow: auto; font-size: 12px; padding: 12px; border-radius: 8px; background: var(--surface-soft); }
+.seat-workspace { padding-bottom: 36px; }
+.plan-editor-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; align-items: start; }
+.plan-editor-layout > *, .plan-inspector, .plan-inspector .field, .import-layout > * { min-width: 0; }
+.plan-inspector .card { padding: 22px; }
+.plan-inspector h2 { font-size: 23px; }
+.plan-inspector h3 { font-size: 19px; }
+.plan-inspector .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.plan-inspector .btn { font-size: 13px; }
+.plan-inspector details[open] summary { margin-bottom: 14px; }
+.plan-stage.card { padding: 0; overflow: hidden; }
+.plan-toolbar { display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding: 12px 16px; }
+.plan-toolbar .btn { padding: 9px 12px; min-height: 40px; font-size: 13px; }
+.plan-toolbar .tabs { flex-wrap: wrap; }
+.plan-toolbar .tabs button { font-size: 12px; padding: 9px; }
+.plan-toolbar .actions { gap: 5px; }
+.plan-viewport { width: 100%; height: clamp(320px, 58vh, 750px); overflow: auto; background: var(--muted); overscroll-behavior: contain; }
+.plan-canvas { position: relative; min-width: 100%; background: var(--surface); }
+.plan-canvas.without-background, .map-without-background { background-color: var(--surface-soft); background-image: radial-gradient(var(--line-strong) 1px, transparent 1px); background-size: 20px 20px; }
+.plan-svg { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; user-select: none; }
+.plan-dot { fill: var(--surface); stroke: var(--secondary); stroke-width: 2; cursor: pointer; }
+.plan-dot.is-selected { fill: var(--yellow); stroke: #161910; stroke-width: 2.5; }
+.plan-dot:hover { stroke: var(--ink); stroke-width: 4; }
+.tool-add .plan-svg, .tool-box .plan-svg { cursor: crosshair; }
+.tool-pan .plan-svg { cursor: grab; }
+.tool-pan .plan-svg:active { cursor: grabbing; }
+.plan-selection-box { fill: var(--yellow); fill-opacity: .18; stroke: var(--focus); stroke-width: 2; stroke-dasharray: 8 4; pointer-events: none; }
+.plan-empty-canvas { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; text-align: center; flex-direction: column; gap: 14px; pointer-events: none; padding: 24px; }
+.plan-empty-canvas strong { font-size: clamp(17px, 2vw, 24px); letter-spacing: -.03em; }
+.plan-empty-canvas span { font-size: 14px; color: var(--secondary); }
+.plan-statusbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 12px 16px; color: var(--secondary); font-size: 11px; border-top: 1px solid var(--line); }
+.plan-statusbar > span { display: flex; align-items: center; gap: 7px; }
+.selected-row { background: var(--accent-soft); }
+.batch-preview { aspect-ratio: 1.6; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 12px; padding: 8px; }
+.batch-preview svg { width: 100%; height: 100%; }
+.editor-savebar { position: sticky; bottom: 12px; z-index: 15; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 16px; box-shadow: var(--shadow-card); }
+.editor-savebar > div { display: grid; gap: 4px; }
+.editor-savebar small { font-size: 12px; }
+@media (max-width: 1200px) { .plan-editor-layout { grid-template-columns: minmax(0, 1fr); } .plan-inspector { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
+@media (max-width: 850px) { .import-layout { grid-template-columns: 1fr; } .import-metrics { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .plan-inspector { display: flex; flex-direction: column; } .plan-inspector > * { width: 100%; } .editor-savebar { flex-direction: column; align-items: stretch; bottom: 8px; padding: 14px; } .plan-toolbar { padding: 10px; } .plan-statusbar > span:last-child { display: none; } .cover-dropzone { padding: 12px; } .selected-image-info { align-items: flex-start; flex-direction: column; } }
+
+/* Imported-seat diagnostics must remain usable on both narrow and wide screens. */
+.seat-data-warning { gap: 10px; min-width: 0; }
+.seat-data-warning p { margin: 0; overflow-wrap: anywhere; }
+.seat-data-warning .btn { align-self: flex-start; }
+.seat-data-warning summary { cursor: pointer; }
+#plan-seat-list { scroll-margin-top: 110px; }

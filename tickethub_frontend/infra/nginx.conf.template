@@ -1,0 +1,70 @@
+# Public media contains event/venue images only. Never place private ticket files here.
+server {
+    listen 80;
+    server_name ${PUBLIC_HOST};
+    return 308 https://${PUBLIC_HOST}$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name ${PUBLIC_HOST};
+    ssl_certificate /etc/nginx/certs/fullchain.pem;
+    ssl_certificate_key /etc/nginx/certs/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    client_max_body_size 110m; # 100 MiB file plus multipart fields
+    add_header X-Content-Type-Options nosniff always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
+    add_header X-Frame-Options DENY always;
+
+    location /api/ {
+        proxy_pass http://backend:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_no_cache 1;
+        proxy_cache_bypass 1;
+        proxy_read_timeout 310s;
+    }
+    location /ops/ {
+        proxy_pass http://backend:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_no_cache 1;
+        proxy_cache_bypass 1;
+    }
+    location /health/ {
+        proxy_pass http://backend:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        access_log off;
+    }
+    location /media/ {
+        alias /srv/media/;
+        autoindex off;
+        add_header X-Content-Type-Options nosniff always;
+    }
+    location /static/ {
+        alias /srv/static/;
+        autoindex off;
+        add_header X-Content-Type-Options nosniff always;
+    }
+    location /_next/static/ {
+        proxy_pass http://frontend:3000;
+        proxy_set_header Host $host;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+    location / {
+        proxy_pass http://frontend:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # Preserve App Router streaming; no shared HTML cache for authenticated pages.
+        proxy_buffering off;
+        proxy_no_cache 1;
+        proxy_cache_bypass 1;
+        proxy_read_timeout 310s;
+    }
+}

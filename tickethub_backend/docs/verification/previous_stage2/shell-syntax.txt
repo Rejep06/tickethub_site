@@ -1,0 +1,3 @@
+$ sh -n scripts/check_foundation.sh
+
+EXIT_CODE=0

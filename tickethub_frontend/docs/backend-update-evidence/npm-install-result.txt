@@ -1,0 +1,4 @@
+npm install --include=optional --fetch-retries=0 --fetch-timeout=15000
+Stopped after exceeding the 50-second time limit; no dependency installation completed.
+Direct probe: curl -I --max-time 8 https://registry.npmjs.org/next
+curl: (6) Could not resolve host: registry.npmjs.org

@@ -1,0 +1,7 @@
+$ uv pip install --python /mnt/data/tickethub-venv/bin/python -r /mnt/data/tickethub/backend/requirements.txt
+Using Python 3.13.5 environment at: /mnt/data/tickethub-venv
+error: Failed to fetch: `https://pypi.org/simple/django/`
+  Caused by: error sending request for url (https://pypi.org/simple/django/)
+  Caused by: operation timed out
+
+EXIT_CODE=2

@@ -1,0 +1,5 @@
+
+> tickethub-frontend@1.0.0 test:components
+> vitest run tests/components/seat-map-regression.test.tsx tests/components/seat-editor-regression.test.tsx
+
+sh: 1: vitest: not found

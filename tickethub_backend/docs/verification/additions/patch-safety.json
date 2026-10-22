@@ -1,0 +1,30 @@
+{
+  "checks": 5,
+  "passed": 5,
+  "commands": [
+    {
+      "args": [
+        "--check"
+      ],
+      "code": 2,
+      "output": "STOP: these files differ from the supplied base version. Nothing has been changed:\n  backend/config/settings/base.py\nReview/merge changes manually. Do not delete your files or database to bypass this check.\n"
+    },
+    {
+      "args": [
+        "--check"
+      ],
+      "code": 0,
+      "output": "Compatible. Files to apply: 58; already current: 1.\n"
+    },
+    {
+      "args": [],
+      "code": 0,
+      "output": "Compatible. Files to apply: 58; already current: 1.\nApplied 58 files. Previous versions: /mnt/data/patch_safety_test/tickethub/backups/source-patch-20261006T213148Z-aeef0c65\n.env and Compose files were not touched. Review migrations before using the new screens.\n"
+    },
+    {
+      "args": [],
+      "code": 0,
+      "output": "Compatible. Files to apply: 0; already current: 59.\n"
+    }
+  ]
+}

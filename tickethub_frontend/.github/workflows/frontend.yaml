@@ -1,0 +1,24 @@
+name: Frontend checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Require a resolved lockfile
+        run: test -f package-lock.json
+      - run: npm ci
+      - run: npm run check:translations
+      - run: npm run generate:api && git diff --exit-code -- src/lib/api/generated.ts
+      - run: npm run check:source
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run test:components
+      - run: npm run build
+      # Live E2E is intentionally a separate staging job: it needs a disposable Django database and OTP delivery.

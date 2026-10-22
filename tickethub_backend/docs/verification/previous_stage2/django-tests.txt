@@ -1,0 +1,10 @@
+$ /mnt/data/tickethub-venv/bin/python manage.py test --settings=config.settings.test --verbosity=2
+Traceback (most recent call last):
+  File "/mnt/data/tickethub/backend/manage.py", line 13, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/data/tickethub/backend/manage.py", line 8, in main
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
+
+EXIT_CODE=1

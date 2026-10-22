@@ -1,0 +1,1431 @@
+
+> tickethub-frontend@1.0.0 test
+> node scripts/test-unit.mjs
+
+Strict domain-module type check passed (22 modules; TypeScript 5.8.3). This is NOT an application build.
+TAP version 13
+# Subtest: Read typed JSON and empty successful responses
+ok 1 - Read typed JSON and empty successful responses
+  ---
+  duration_ms: 22.684909
+  type: 'test'
+  ...
+# Subtest: Backend error preserves code, field details and request id
+ok 2 - Backend error preserves code, field details and request id
+  ---
+  duration_ms: 1.110922
+  type: 'test'
+  ...
+# Subtest: HTML proxy errors never surface a traceback as a message
+ok 3 - HTML proxy errors never surface a traceback as a message
+  ---
+  duration_ms: 0.378961
+  type: 'test'
+  ...
+# Subtest: Malformed successful response is not fake success
+ok 4 - Malformed successful response is not fake success
+  ---
+  duration_ms: 0.294333
+  type: 'test'
+  ...
+# Subtest: 429 captures server Retry-After
+ok 5 - 429 captures server Retry-After
+  ---
+  duration_ms: 0.765392
+  type: 'test'
+  ...
+# Subtest: GET includes session, locale, cache protection and request id
+ok 6 - GET includes session, locale, cache protection and request id
+  ---
+  duration_ms: 1.455691
+  type: 'test'
+  ...
+# Subtest: Mutation acquires CSRF, includes session and idempotency key
+ok 7 - Mutation acquires CSRF, includes session and idempotency key
+  ---
+  duration_ms: 1.253446
+  type: 'test'
+  ...
+# Subtest: CSRF token is fetched again after login rotation
+ok 8 - CSRF token is fetched again after login rotation
+  ---
+  duration_ms: 2.018998
+  type: 'test'
+  ...
+# Subtest: Failed CSRF prevents any mutation
+ok 9 - Failed CSRF prevents any mutation
+  ---
+  duration_ms: 0.616017
+  type: 'test'
+  ...
+# Subtest: File upload does not set a broken JSON content type
+ok 10 - File upload does not set a broken JSON content type
+  ---
+  duration_ms: 1.004662
+  type: 'test'
+  ...
+# Subtest: Network failure is explicit and not retried silently
+ok 11 - Network failure is explicit and not retried silently
+  ---
+  duration_ms: 0.292991
+  type: 'test'
+  ...
+# Subtest: Permission status 401 is not converted to success
+ok 12 - Permission status 401 is not converted to success
+  ---
+  duration_ms: 1.739027
+  type: 'test'
+  ...
+# Subtest: Permission status 403 is not converted to success
+ok 13 - Permission status 403 is not converted to success
+  ---
+  duration_ms: 0.570248
+  type: 'test'
+  ...
+# Subtest: External and traversal API paths are rejected
+ok 14 - External and traversal API paths are rejected
+  ---
+  duration_ms: 0.247041
+  type: 'test'
+  ...
+# Subtest: 409 seat conflict retains exact backend code
+ok 15 - 409 seat conflict retains exact backend code
+  ---
+  duration_ms: 1.250702
+  type: 'test'
+  ...
+# Subtest: Django array validation details survive error normalization
+ok 16 - Django array validation details survive error normalization
+  ---
+  duration_ms: 23.118362
+  type: 'test'
+  ...
+# Subtest: Nested field errors are visible without printing raw objects
+ok 17 - Nested field errors are visible without printing raw objects
+  ---
+  duration_ms: 1.13632
+  type: 'test'
+  ...
+# Subtest: Unknown validation data is bounded and empty objects are not errors
+ok 18 - Unknown validation data is bounded and empty objects are not errors
+  ---
+  duration_ms: 0.415585
+  type: 'test'
+  ...
+# Subtest: 5xx responses never expose backend details or tracebacks
+ok 19 - 5xx responses never expose backend details or tracebacks
+  ---
+  duration_ms: 0.703499
+  type: 'test'
+  ...
+# Subtest: 413 upload errors have a meaningful error code even for an HTML proxy response
+ok 20 - 413 upload errors have a meaningful error code even for an HTML proxy response
+  ---
+  duration_ms: 0.563137
+  type: 'test'
+  ...
+# Subtest: Request id can also come from the HTTP header
+ok 21 - Request id can also come from the HTTP header
+  ---
+  duration_ms: 0.54499
+  type: 'test'
+  ...
+# Subtest: Image signature recognises png, independent of extension
+ok 22 - Image signature recognises png, independent of extension
+  ---
+  duration_ms: 0.503578
+  type: 'test'
+  ...
+# Subtest: Image signature recognises jpeg, independent of extension
+ok 23 - Image signature recognises jpeg, independent of extension
+  ---
+  duration_ms: 0.149324
+  type: 'test'
+  ...
+# Subtest: Image signature recognises webp, independent of extension
+ok 24 - Image signature recognises webp, independent of extension
+  ---
+  duration_ms: 0.421224
+  type: 'test'
+  ...
+# Subtest: Static SVG is detected from contents even with a PNG extension
+ok 25 - Static SVG is detected from contents even with a PNG extension
+  ---
+  duration_ms: 0.546202
+  type: 'test'
+  ...
+# Subtest: Rejects zero-length and oversized image files
+ok 26 - Rejects zero-length and oversized image files
+  ---
+  duration_ms: 0.258609
+  type: 'test'
+  ...
+# Subtest: Unknown binary image formats are not sent as renamed PNGs
+ok 27 - Unknown binary image formats are not sent as renamed PNGs
+  ---
+  duration_ms: 0.421234
+  type: 'test'
+  ...
+# Subtest: Image bounds reject 20001 x 100
+ok 28 - Image bounds reject 20001 x 100
+  ---
+  duration_ms: 0.240101
+  type: 'test'
+  ...
+# Subtest: Image bounds reject 20000 x 20000
+ok 29 - Image bounds reject 20000 x 20000
+  ---
+  duration_ms: 0.138078
+  type: 'test'
+  ...
+# Subtest: Image bounds reject 0 x 10
+ok 30 - Image bounds reject 0 x 10
+  ---
+  duration_ms: 0.091187
+  type: 'test'
+  ...
+# Subtest: Image bounds reject NaN x 5
+ok 31 - Image bounds reject NaN x 5
+  ---
+  duration_ms: 0.067792
+  type: 'test'
+  ...
+# Subtest: Image bounds reject -2 x 2
+ok 32 - Image bounds reject -2 x 2
+  ---
+  duration_ms: 0.06642
+  type: 'test'
+  ...
+# Subtest: Exact server image dimensions limit is accepted
+ok 33 - Exact server image dimensions limit is accepted
+  ---
+  duration_ms: 0.086521
+  type: 'test'
+  ...
+# Subtest: Multipart cover upload has exactly the four backend fields
+ok 34 - Multipart cover upload has exactly the four backend fields
+  ---
+  duration_ms: 0.614074
+  type: 'test'
+  ...
+# Subtest: Cover upload validates required rights fields
+ok 35 - Cover upload validates required rights fields
+  ---
+  duration_ms: 0.215495
+  type: 'test'
+  ...
+# Subtest: Cover upload validates required rights fields
+ok 36 - Cover upload validates required rights fields
+  ---
+  duration_ms: 0.224048
+  type: 'test'
+  ...
+# Subtest: Cover upload validates required rights fields
+ok 37 - Cover upload validates required rights fields
+  ---
+  duration_ms: 0.277758
+  type: 'test'
+  ...
+# Subtest: Cover upload rejects unknown/invalid record version
+ok 38 - Cover upload rejects unknown/invalid record version
+  ---
+  duration_ms: 0.225419
+  type: 'test'
+  ...
+# Subtest: Read and write normalized coordinates do not create false edits
+ok 39 - Read and write normalized coordinates do not create false edits
+  ---
+  duration_ms: 0.473623
+  type: 'test'
+  ...
+# Subtest: Bulk edit contains exact expected version, creates, updates, deletes
+ok 40 - Bulk edit contains exact expected version, creates, updates, deletes
+  ---
+  duration_ms: 0.619202
+  type: 'test'
+  ...
+# Subtest: Unknown seat ids cannot be included in a bulk mutation
+ok 41 - Unknown seat ids cannot be included in a bulk mutation
+  ---
+  duration_ms: 0.221283
+  type: 'test'
+  ...
+# Subtest: Duplicate place identities are rejected before a save
+ok 42 - Duplicate place identities are rejected before a save
+  ---
+  duration_ms: 0.277468
+  type: 'test'
+  ...
+# Subtest: Whitespace-only labels and non-finite coordinates are rejected
+ok 43 - Whitespace-only labels and non-finite coordinates are rejected
+  ---
+  duration_ms: 1.031132
+  type: 'test'
+  ...
+# Subtest: Plan size is capped at 50,000 seats
+ok 44 - Plan size is capped at 50,000 seats
+  ---
+  duration_ms: 0.292981
+  type: 'test'
+  ...
+# Subtest: Bulk save count boundary and no-op are checked
+ok 45 - Bulk save count boundary and no-op are checked
+  ---
+  duration_ms: 0.29219
+  type: 'test'
+  ...
+# Subtest: Geometry changes clear all affected adjacency groups, not just the moved seat
+ok 46 - Geometry changes clear all affected adjacency groups, not just the moved seat
+  ---
+  duration_ms: 0.373822
+  type: 'test'
+  ...
+# Subtest: Deleting a seat clears the surviving adjacency group
+ok 47 - Deleting a seat clears the surviving adjacency group
+  ---
+  duration_ms: 0.198489
+  type: 'test'
+  ...
+# Subtest: Transforms do not mutate originals or silently clamp out-of-bounds seats
+ok 48 - Transforms do not mutate originals or silently clamp out-of-bounds seats
+  ---
+  duration_ms: 0.509977
+  type: 'test'
+  ...
+# Subtest: Horizontal mirroring preserves center and swaps x positions
+ok 49 - Horizontal mirroring preserves center and swaps x positions
+  ---
+  duration_ms: 0.275124
+  type: 'test'
+  ...
+# Subtest: Rotation accounts for canvas aspect ratio
+ok 50 - Rotation accounts for canvas aspect ratio
+  ---
+  duration_ms: 0.243016
+  type: 'test'
+  ...
+# Subtest: Rectangle selection works in either drag direction
+ok 51 - Rectangle selection works in either drag direction
+  ---
+  duration_ms: 0.336647
+  type: 'test'
+  ...
+# Subtest: CSV exports real geometry, escaped delimiters, and neutralizes formulas
+ok 52 - CSV exports real geometry, escaped delimiters, and neutralizes formulas
+  ---
+  duration_ms: 0.369265
+  type: 'test'
+  ...
+# Subtest: Provider URL accepts supported form https://portalbilet.ru/sochi/my-event
+ok 53 - Provider URL accepts supported form https://portalbilet.ru/sochi/my-event
+  ---
+  duration_ms: 0.683509
+  type: 'test'
+  ...
+# Subtest: Provider URL accepts supported form https://www.portalbilet.ru/sochi/my_event?utm=x\#top
+ok 54 - Provider URL accepts supported form https://www.portalbilet.ru/sochi/my_event?utm=x\#top
+  ---
+  duration_ms: 0.217528
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form http://portalbilet.ru/a/b
+ok 55 - Provider URL rejects unsupported form http://portalbilet.ru/a/b
+  ---
+  duration_ms: 0.172249
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form https://evil.test/a/b
+ok 56 - Provider URL rejects unsupported form https://evil.test/a/b
+  ---
+  duration_ms: 0.129715
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form https://portalbilet.ru.evil.test/a/b
+ok 57 - Provider URL rejects unsupported form https://portalbilet.ru.evil.test/a/b
+  ---
+  duration_ms: 0.181484
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form https://user@portalbilet.ru/a/b
+ok 58 - Provider URL rejects unsupported form https://user@portalbilet.ru/a/b
+  ---
+  duration_ms: 0.203226
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form https://portalbilet.ru/a/b/c
+ok 59 - Provider URL rejects unsupported form https://portalbilet.ru/a/b/c
+  ---
+  duration_ms: 0.147563
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form https://portalbilet.ru/a/%62
+ok 60 - Provider URL rejects unsupported form https://portalbilet.ru/a/%62
+  ---
+  duration_ms: 0.157577
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form https://portalbilet.ru/a/b\\c
+ok 61 - Provider URL rejects unsupported form https://portalbilet.ru/a/b\\c
+  ---
+  duration_ms: 0.135334
+  type: 'test'
+  ...
+# Subtest: Provider URL rejects unsupported form https://portalbilet.ru/a/../b
+ok 62 - Provider URL rejects unsupported form https://portalbilet.ru/a/../b
+  ---
+  duration_ms: 0.646262
+  type: 'test'
+  ...
+# Subtest: New editor block-preview sends CSRF, slash and the original body
+ok 63 - New editor block-preview sends CSRF, slash and the original body
+  ---
+  duration_ms: 5.168808
+  type: 'test'
+  ...
+# Subtest: New editor csv-preview sends CSRF, slash and the original body
+ok 64 - New editor csv-preview sends CSRF, slash and the original body
+  ---
+  duration_ms: 0.965113
+  type: 'test'
+  ...
+# Subtest: New editor bulk-edit sends CSRF, slash and the original body
+ok 65 - New editor bulk-edit sends CSRF, slash and the original body
+  ---
+  duration_ms: 1.782793
+  type: 'test'
+  ...
+# Subtest: Import sends IMPORT_ONLY, never MIRROR or a pretend live sale
+ok 66 - Import sends IMPORT_ONLY, never MIRROR or a pretend live sale
+  ---
+  duration_ms: 2.320513
+  type: 'test'
+  ...
+# Subtest: Sync sends an empty JSON object and canonical path
+ok 67 - Sync sends an empty JSON object and canonical path
+  ---
+  duration_ms: 0.722487
+  type: 'test'
+  ...
+# Subtest: Import failure is not automatically retried
+ok 68 - Import failure is not automatically retried
+  ---
+  duration_ms: 0.747054
+  type: 'test'
+  ...
+# Subtest: API operation timers are bounded
+ok 69 - API operation timers are bounded
+  ---
+  duration_ms: 0.256496
+  type: 'test'
+  ...
+# Subtest: Contract-level buyer flow: OTP → profile → preview → hold → order
+ok 70 - Contract-level buyer flow: OTP → profile → preview → hold → order
+  ---
+  duration_ms: 36.145076
+  type: 'test'
+  ...
+# Subtest: Staff finance and delivery use action endpoints, expected version and exact amounts
+ok 71 - Staff finance and delivery use action endpoints, expected version and exact amounts
+  ---
+  duration_ms: 2.840695
+  type: 'test'
+  ...
+# Subtest: Refund settlement is separate from approval and uses the order version
+ok 72 - Refund settlement is separate from approval and uses the order version
+  ---
+  duration_ms: 1.838296
+  type: 'test'
+  ...
+# Subtest: seat coordinates are relative to the scaled image bounds
+ok 73 - seat coordinates are relative to the scaled image bounds
+  ---
+  duration_ms: 2.064387
+  type: 'test'
+  ...
+# Subtest: drag outside an image is clamped, not saved out of bounds
+ok 74 - drag outside an image is clamped, not saved out of bounds
+  ---
+  duration_ms: 0.23917
+  type: 'test'
+  ...
+# Subtest: zero dimensions are rejected
+ok 75 - zero dimensions are rejected
+  ---
+  duration_ms: 0.540113
+  type: 'test'
+  ...
+# Subtest: coordinate clamp preserves boundaries
+ok 76 - coordinate clamp preserves boundaries
+  ---
+  duration_ms: 0.195174
+  type: 'test'
+  ...
+# Subtest: row interpolation includes both selected endpoints
+ok 77 - row interpolation includes both selected endpoints
+  ---
+  duration_ms: 0.396507
+  type: 'test'
+  ...
+# Subtest: one seat is placed at the first endpoint
+ok 78 - one seat is placed at the first endpoint
+  ---
+  duration_ms: 0.165398
+  type: 'test'
+  ...
+# Subtest: duplicate, empty and more than 500 row numbers are rejected
+ok 79 - duplicate, empty and more than 500 row numbers are rejected
+  ---
+  duration_ms: 1.878247
+  type: 'test'
+  ...
+# Subtest: invalid row geometry is rejected before the API write
+ok 80 - invalid row geometry is rejected before the API write
+  ---
+  duration_ms: 0.2129
+  type: 'test'
+  ...
+# Subtest: Retry reuses the same UUID for an identical payload
+ok 81 - Retry reuses the same UUID for an identical payload
+  ---
+  duration_ms: 7.876664
+  type: 'test'
+  ...
+# Subtest: Object key order and omitted undefined do not change request identity
+ok 82 - Object key order and omitted undefined do not change request identity
+  ---
+  duration_ms: 7.208658
+  type: 'test'
+  ...
+# Subtest: Changed money cannot reuse an unresolved operation
+ok 83 - Changed money cannot reuse an unresolved operation
+  ---
+  duration_ms: 1.384163
+  type: 'test'
+  ...
+# Subtest: Storage contains only UUID and hash, not contacts
+ok 84 - Storage contains only UUID and hash, not contacts
+  ---
+  duration_ms: 1.479917
+  type: 'test'
+  ...
+# Subtest: Corrupt stored attempt does not silently create a new key
+ok 85 - Corrupt stored attempt does not silently create a new key
+  ---
+  duration_ms: 1.119435
+  type: 'test'
+  ...
+# Subtest: Ambiguous 5xx retains the key and technical retry succeeds once
+ok 86 - Ambiguous 5xx retains the key and technical retry succeeds once
+  ---
+  duration_ms: 29.568413
+  type: 'test'
+  ...
+# Subtest: Definitive validation error allows a corrected new attempt
+ok 87 - Definitive validation error allows a corrected new attempt
+  ---
+  duration_ms: 2.404609
+  type: 'test'
+  ...
+# Subtest: Idempotency conflict is not automatically forgotten
+ok 88 - Idempotency conflict is not automatically forgotten
+  ---
+  duration_ms: 2.863239
+  type: 'test'
+  ...
+# Subtest: Lost hold response can be retried after reload without a new preview
+ok 89 - Lost hold response can be retried after reload without a new preview
+  ---
+  duration_ms: 3.868351
+  type: 'test'
+  ...
+# Subtest: Unavailable seat clears pending hold but not selection
+ok 90 - Unavailable seat clears pending hold but not selection
+  ---
+  duration_ms: 0.998673
+  type: 'test'
+  ...
+# Subtest: Logout clears only Tickethub private tab state
+ok 91 - Logout clears only Tickethub private tab state
+  ---
+  duration_ms: 0.177247
+  type: 'test'
+  ...
+# Subtest: RUB is formatted from kopecks, not rubles
+ok 92 - RUB is formatted from kopecks, not rubles
+  ---
+  duration_ms: 18.066423
+  type: 'test'
+  ...
+# Subtest: English formatting keeps RUB
+ok 93 - English formatting keeps RUB
+  ---
+  duration_ms: 0.684851
+  type: 'test'
+  ...
+# Subtest: Unknown money is not represented as zero
+ok 94 - Unknown money is not represented as zero
+  ---
+  duration_ms: 0.468786
+  type: 'test'
+  ...
+# Subtest: Zero and cents are not lost
+ok 95 - Zero and cents are not lost
+  ---
+  duration_ms: 0.499642
+  type: 'test'
+  ...
+# Subtest: Negative financial results remain visible
+ok 96 - Negative financial results remain visible
+  ---
+  duration_ms: 0.361423
+  type: 'test'
+  ...
+# Subtest: Ruble input: 5500
+ok 97 - Ruble input: 5500
+  ---
+  duration_ms: 0.257307
+  type: 'test'
+  ...
+# Subtest: Ruble input: 5 500,50
+ok 98 - Ruble input: 5 500,50
+  ---
+  duration_ms: 0.301754
+  type: 'test'
+  ...
+# Subtest: Ruble input: 0.01
+ok 99 - Ruble input: 0.01
+  ---
+  duration_ms: 0.113561
+  type: 'test'
+  ...
+# Subtest: Ruble input: 0
+ok 100 - Ruble input: 0
+  ---
+  duration_ms: 0.304057
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: ""
+ok 101 - Reject invalid money: ""
+  ---
+  duration_ms: 0.726753
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "-1"
+ok 102 - Reject invalid money: "-1"
+  ---
+  duration_ms: 0.150687
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "NaN"
+ok 103 - Reject invalid money: "NaN"
+  ---
+  duration_ms: 0.083005
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "1.234"
+ok 104 - Reject invalid money: "1.234"
+  ---
+  duration_ms: 0.065378
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "1e3"
+ok 105 - Reject invalid money: "1e3"
+  ---
+  duration_ms: 0.055253
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "90071992547409999"
+ok 106 - Reject invalid money: "90071992547409999"
+  ---
+  duration_ms: 0.075994
+  type: 'test'
+  ...
+# Subtest: Ruble edit formatting round-trips cents
+ok 107 - Ruble edit formatting round-trips cents
+  ---
+  duration_ms: 0.127802
+  type: 'test'
+  ...
+# Subtest: Unknown purchase price stays blank in edit form
+ok 108 - Unknown purchase price stays blank in edit form
+  ---
+  duration_ms: 0.09985
+  type: 'test'
+  ...
+# Subtest: Event time uses venue timezone, not the device
+ok 109 - Event time uses venue timezone, not the device
+  ---
+  duration_ms: 4.666854
+  type: 'test'
+  ...
+# Subtest: TBA and bad timezone have safe display
+ok 110 - TBA and bad timezone have safe display
+  ---
+  duration_ms: 0.203576
+  type: 'test'
+  ...
+# Subtest: Hold starts from the server expiry, not a local ten-minute timer
+ok 111 - Hold starts from the server expiry, not a local ten-minute timer
+  ---
+  duration_ms: 0.160131
+  type: 'test'
+  ...
+# Subtest: Hold reload uses newly fetched server_now
+ok 112 - Hold reload uses newly fetched server_now
+  ---
+  duration_ms: 0.10597
+  type: 'test'
+  ...
+# Subtest: Changing Date.now does not extend hold countdown
+ok 113 - Changing Date.now does not extend hold countdown
+  ---
+  duration_ms: 0.175855
+  type: 'test'
+  ...
+# Subtest: Expired or malformed holds never gain time
+ok 114 - Expired or malformed holds never gain time
+  ---
+  duration_ms: 0.076786
+  type: 'test'
+  ...
+# Subtest: Countdown labels use mm:ss
+ok 115 - Countdown labels use mm:ss
+  ---
+  duration_ms: 0.079149
+  type: 'test'
+  ...
+# Subtest: Date input round-trip retains an explicit ISO timestamp
+ok 116 - Date input round-trip retains an explicit ISO timestamp
+  ---
+  duration_ms: 0.275565
+  type: 'test'
+  ...
+# Subtest: NEW order offers start but not confirm
+ok 117 - NEW order offers start but not confirm
+  ---
+  duration_ms: 1.267297
+  type: 'test'
+  ...
+# Subtest: IN_PROGRESS order offers confirmation, not start
+ok 118 - IN_PROGRESS order offers confirmation, not start
+  ---
+  duration_ms: 0.308465
+  type: 'test'
+  ...
+# Subtest: Received money prevents simple rejection
+ok 119 - Received money prevents simple rejection
+  ---
+  duration_ms: 0.302055
+  type: 'test'
+  ...
+# Subtest: Delivery history prevents rejection even after voiding
+ok 120 - Delivery history prevents rejection even after voiding
+  ---
+  duration_ms: 0.10618
+  type: 'test'
+  ...
+# Subtest: Unpaid confirmed order cannot record delivery
+ok 121 - Unpaid confirmed order cannot record delivery
+  ---
+  duration_ms: 1.010291
+  type: 'test'
+  ...
+# Subtest: Fully paid confirmed order can record delivery
+ok 122 - Fully paid confirmed order can record delivery
+  ---
+  duration_ms: 0.12609
+  type: 'test'
+  ...
+# Subtest: Partial delivery is explicitly 2 of 4, not sent
+ok 123 - Partial delivery is explicitly 2 of 4, not sent
+  ---
+  duration_ms: 0.185539
+  type: 'test'
+  ...
+# Subtest: Incomplete delivery prevents order completion
+ok 124 - Incomplete delivery prevents order completion
+  ---
+  duration_ms: 0.142605
+  type: 'test'
+  ...
+# Subtest: Open case prevents completion even when fully paid and sent
+ok 125 - Open case prevents completion even when fully paid and sent
+  ---
+  duration_ms: 0.283767
+  type: 'test'
+  ...
+# Subtest: Fully fulfilled order permits complete action
+ok 126 - Fully fulfilled order permits complete action
+  ---
+  duration_ms: 0.29903
+  type: 'test'
+  ...
+# Subtest: Empty active order cannot complete
+ok 127 - Empty active order cannot complete
+  ---
+  duration_ms: 0.257688
+  type: 'test'
+  ...
+# Subtest: Closed orders do not show processing or cancellation
+ok 128 - Closed orders do not show processing or cancellation
+  ---
+  duration_ms: 0.090967
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: me (ru)
+ok 129 - canonical REST URL: me (ru)
+  ---
+  duration_ms: 2.329676
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: me/ (en)
+ok 130 - canonical REST URL: me/ (en)
+  ---
+  duration_ms: 0.248464
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: public/config (ru)
+ok 131 - canonical REST URL: public/config (ru)
+  ---
+  duration_ms: 0.365871
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: public/config/ (ru)
+ok 132 - canonical REST URL: public/config/ (ru)
+  ---
+  duration_ms: 0.251559
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: auth/csrf (no locale)
+ok 133 - canonical REST URL: auth/csrf (no locale)
+  ---
+  duration_ms: 0.45193
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: auth/csrf/ (no locale)
+ok 134 - canonical REST URL: auth/csrf/ (no locale)
+  ---
+  duration_ms: 0.204107
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: staff/orders/42/confirm (ru)
+ok 135 - canonical REST URL: staff/orders/42/confirm (ru)
+  ---
+  duration_ms: 0.217647
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: me///?lang=en&lang=ru (en)
+ok 136 - canonical REST URL: me///?lang=en&lang=ru (en)
+  ---
+  duration_ms: 0.968848
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: events?q=Live%20show&page=2 (en)
+ok 137 - canonical REST URL: events?q=Live%20show&page=2 (en)
+  ---
+  duration_ms: 0.464649
+  type: 'test'
+  ...
+# Subtest: canonical REST URL: events/?lang=en&city=London (ru)
+ok 138 - canonical REST URL: events/?lang=en&city=London (ru)
+  ---
+  duration_ms: 0.37877
+  type: 'test'
+  ...
+# Subtest: an existing query is preserved, with the slash before—not after—it
+ok 139 - an existing query is preserved, with the slash before—not after—it
+  ---
+  duration_ms: 0.249054
+  type: 'test'
+  ...
+# Subtest: the API path builder also works for server-side new URL(base)
+ok 140 - the API path builder also works for server-side new URL(base)
+  ---
+  duration_ms: 0.197177
+  type: 'test'
+  ...
+# Subtest: absolute, traversal, malformed and backslash paths are rejected
+ok 141 - absolute, traversal, malformed and backslash paths are rejected
+  ---
+  duration_ms: 1.112093
+  type: 'test'
+  ...
+# Subtest: invalid mutation addresses trigger neither CSRF nor the mutation request
+ok 142 - invalid mutation addresses trigger neither CSRF nor the mutation request
+  ---
+  duration_ms: 0.540393
+  type: 'test'
+  ...
+# Subtest: browser fetch sends me with canonical slash and explicit Russian locale
+ok 143 - browser fetch sends me with canonical slash and explicit Russian locale
+  ---
+  duration_ms: 25.300415
+  type: 'test'
+  ...
+# Subtest: browser fetch sends public/config with canonical slash and explicit Russian locale
+ok 144 - browser fetch sends public/config with canonical slash and explicit Russian locale
+  ---
+  duration_ms: 0.436517
+  type: 'test'
+  ...
+# Subtest: POST retains its body and uses an unlocalized canonical CSRF URL
+ok 145 - POST retains its body and uses an unlocalized canonical CSRF URL
+  ---
+  duration_ms: 0.79079
+  type: 'test'
+  ...
+# Subtest: PATCH retains its body and uses an unlocalized canonical CSRF URL
+ok 146 - PATCH retains its body and uses an unlocalized canonical CSRF URL
+  ---
+  duration_ms: 0.659733
+  type: 'test'
+  ...
+# Subtest: DELETE retains its body and uses an unlocalized canonical CSRF URL
+ok 147 - DELETE retains its body and uses an unlocalized canonical CSRF URL
+  ---
+  duration_ms: 1.607774
+  type: 'test'
+  ...
+# Subtest: Next rewrite source explicitly restores the upstream slash, without changing media
+ok 148 - Next rewrite source explicitly restores the upstream slash, without changing media
+  ---
+  duration_ms: 0.721696
+  type: 'test'
+  ...
+# Subtest: theme storage accepts only supported preferences
+ok 149 - theme storage accepts only supported preferences
+  ---
+  duration_ms: 0.157316
+  type: 'test'
+  ...
+# Subtest: explicit theme wins over OS preference
+ok 150 - explicit theme wins over OS preference
+  ---
+  duration_ms: 0.09972
+  type: 'test'
+  ...
+# Subtest: system mode follows both OS preferences
+ok 151 - system mode follows both OS preferences
+  ---
+  duration_ms: 0.084397
+  type: 'test'
+  ...
+# Subtest: first-paint script: stored=dark, OS dark=false
+ok 152 - first-paint script: stored=dark, OS dark=false
+  ---
+  duration_ms: 0.874086
+  type: 'test'
+  ...
+# Subtest: first-paint script: stored=light, OS dark=true
+ok 153 - first-paint script: stored=light, OS dark=true
+  ---
+  duration_ms: 0.449276
+  type: 'test'
+  ...
+# Subtest: first-paint script: stored=null, OS dark=true
+ok 154 - first-paint script: stored=null, OS dark=true
+  ---
+  duration_ms: 0.474994
+  type: 'test'
+  ...
+# Subtest: first-paint script: stored=null, OS dark=false
+ok 155 - first-paint script: stored=null, OS dark=false
+  ---
+  duration_ms: 0.383837
+  type: 'test'
+  ...
+# Subtest: first-paint script: stored=bad, OS dark=true
+ok 156 - first-paint script: stored=bad, OS dark=true
+  ---
+  duration_ms: 0.804255
+  type: 'test'
+  ...
+# Subtest: blocked localStorage does not prevent first paint in the OS theme
+ok 157 - blocked localStorage does not prevent first paint in the OS theme
+  ---
+  duration_ms: 0.623629
+  type: 'test'
+  ...
+# Subtest: first paint works when matchMedia is unavailable
+ok 158 - first paint works when matchMedia is unavailable
+  ---
+  duration_ms: 1.579598
+  type: 'test'
+  ...
+# Subtest: inclusive catalog end date round trip: 2026-10-31
+ok 159 - inclusive catalog end date round trip: 2026-10-31
+  ---
+  duration_ms: 0.535556
+  type: 'test'
+  ...
+# Subtest: inclusive catalog end date round trip: 2028-02-29
+ok 160 - inclusive catalog end date round trip: 2028-02-29
+  ---
+  duration_ms: 0.123606
+  type: 'test'
+  ...
+# Subtest: inclusive catalog end date round trip: 2026-12-31
+ok 161 - inclusive catalog end date round trip: 2026-12-31
+  ---
+  duration_ms: 0.069955
+  type: 'test'
+  ...
+# Subtest: invalid form dates never produce Invalid Date in an API filter
+ok 162 - invalid form dates never produce Invalid Date in an API filter
+  ---
+  duration_ms: 0.289325
+  type: 'test'
+  ...
+# Subtest: public copy has no developer MVP or document warnings in either locale
+ok 163 - public copy has no developer MVP or document warnings in either locale
+  ---
+  duration_ms: 0.914717
+  type: 'test'
+  ...
+# Subtest: Safe return preserves locale, object and query
+ok 164 - Safe return preserves locale, object and query
+  ---
+  duration_ms: 6.191638
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: https://evil.example
+ok 165 - Unsafe return rejected: https://evil.example
+  ---
+  duration_ms: 0.291229
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: //evil.example
+ok 166 - Unsafe return rejected: //evil.example
+  ---
+  duration_ms: 0.260902
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /ru/../../ops/
+ok 167 - Unsafe return rejected: /ru/../../ops/
+  ---
+  duration_ms: 0.22617
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /ru/%5cevil
+ok 168 - Unsafe return rejected: /ru/%5cevil
+  ---
+  duration_ms: 0.575566
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /ru/%0d%0aX
+ok 169 - Unsafe return rejected: /ru/%0d%0aX
+  ---
+  duration_ms: 0.314844
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /bad/account
+ok 170 - Unsafe return rejected: /bad/account
+  ---
+  duration_ms: 0.147813
+  type: 'test'
+  ...
+# Subtest: Media URLs are forced through the same-origin media path
+ok 171 - Media URLs are forced through the same-origin media path
+  ---
+  duration_ms: 0.35872
+  type: 'test'
+  ...
+# Subtest: Content translation fallback uses supplied RU content only
+ok 172 - Content translation fallback uses supplied RU content only
+  ---
+  duration_ms: 0.332411
+  type: 'test'
+  ...
+# Subtest: Selection survives reload without storing contacts
+ok 173 - Selection survives reload without storing contacts
+  ---
+  duration_ms: 1.430432
+  type: 'test'
+  ...
+# Subtest: Wrong ids and excessive quantities are not trusted
+ok 174 - Wrong ids and excessive quantities are not trusted
+  ---
+  duration_ms: 0.201413
+  type: 'test'
+  ...
+# Subtest: Duplicate seats are not a valid draft
+ok 175 - Duplicate seats are not a valid draft
+  ---
+  duration_ms: 0.196546
+  type: 'test'
+  ...
+# Subtest: Malformed stored JSON does not crash checkout
+ok 176 - Malformed stored JSON does not crash checkout
+  ---
+  duration_ms: 0.225319
+  type: 'test'
+  ...
+# Subtest: Catalog never invents unsupported backend filters
+ok 177 - Catalog never invents unsupported backend filters
+  ---
+  duration_ms: 1.397213
+  type: 'test'
+  ...
+# Subtest: Catalog query preserves dates and paging on reload
+ok 178 - Catalog query preserves dates and paging on reload
+  ---
+  duration_ms: 0.274923
+  type: 'test'
+  ...
+# Subtest: Consent sends precisely the checked document versions
+ok 179 - Consent sends precisely the checked document versions
+  ---
+  duration_ms: 0.238128
+  type: 'test'
+  ...
+# Subtest: Consent cannot silently accept a newly published version
+ok 180 - Consent cannot silently accept a newly published version
+  ---
+  duration_ms: 0.438389
+  type: 'test'
+  ...
+# Subtest: Unchecked legal document blocks submission
+ok 181 - Unchecked legal document blocks submission
+  ---
+  duration_ms: 0.182284
+  type: 'test'
+  ...
+# Subtest: No invented consents when backend has none configured
+ok 182 - No invented consents when backend has none configured
+  ---
+  duration_ms: 0.141322
+  type: 'test'
+  ...
+# Subtest: Image limits exactly match the supplied October backend contract
+ok 183 - Image limits exactly match the supplied October backend contract
+  ---
+  duration_ms: 0.973465
+  type: 'test'
+  ...
+# Subtest: Image dimension boundary accepts 20000 × 15000
+ok 184 - Image dimension boundary accepts 20000 × 15000
+  ---
+  duration_ms: 0.168464
+  type: 'test'
+  ...
+# Subtest: Image dimension boundary accepts 15000 × 20000
+ok 185 - Image dimension boundary accepts 15000 × 20000
+  ---
+  duration_ms: 0.069004
+  type: 'test'
+  ...
+# Subtest: Image dimension boundary accepts 8001 × 5000
+ok 186 - Image dimension boundary accepts 8001 × 5000
+  ---
+  duration_ms: 0.056455
+  type: 'test'
+  ...
+# Subtest: Image dimension boundary accepts 20000 × 1
+ok 187 - Image dimension boundary accepts 20000 × 1
+  ---
+  duration_ms: 0.198759
+  type: 'test'
+  ...
+# Subtest: Side AND area limits reject 20000 × 15001
+ok 188 - Side AND area limits reject 20000 × 15001
+  ---
+  duration_ms: 0.349827
+  type: 'test'
+  ...
+# Subtest: Side AND area limits reject 15001 × 20000
+ok 189 - Side AND area limits reject 15001 × 20000
+  ---
+  duration_ms: 0.126941
+  type: 'test'
+  ...
+# Subtest: Side AND area limits reject 20000 × 20000
+ok 190 - Side AND area limits reject 20000 × 20000
+  ---
+  duration_ms: 0.107512
+  type: 'test'
+  ...
+# Subtest: Side AND area limits reject 1 × 20001
+ok 191 - Side AND area limits reject 1 × 20001
+  ---
+  duration_ms: 0.217367
+  type: 'test'
+  ...
+# Subtest: Side AND area limits reject Infinity × 1
+ok 192 - Side AND area limits reject Infinity × 1
+  ---
+  duration_ms: 0.257588
+  type: 'test'
+  ...
+# Subtest: 100 MiB raster allowed, next byte rejected before reading
+ok 193 - 100 MiB raster allowed, next byte rejected before reading
+  ---
+  duration_ms: 0.624851
+  type: 'test'
+  ...
+# Subtest: 10 MiB SVG allowed, next byte rejected, independent of raster limit
+ok 194 - 10 MiB SVG allowed, next byte rejected, independent of raster limit
+  ---
+  duration_ms: 0.466181
+  type: 'test'
+  ...
+# Subtest: BOM, XML declaration and comments before SVG root are recognised
+ok 195 - BOM, XML declaration and comments before SVG root are recognised
+  ---
+  duration_ms: 0.355595
+  type: 'test'
+  ...
+# Subtest: SVG is never locally rendered, even if it contains a script: server must sanitize
+ok 196 - SVG is never locally rendered, even if it contains a script: server must sanitize
+  ---
+  duration_ms: 0.201754
+  type: 'test'
+  ...
+# Subtest: HTML with an embedded SVG is not treated as a direct image
+ok 197 - HTML with an embedded SVG is not treated as a direct image
+  ---
+  duration_ms: 0.682156
+  type: 'test'
+  ...
+# Subtest: Reads 300 MP image/png metadata without allocating pixels
+ok 198 - Reads 300 MP image/png metadata without allocating pixels
+  ---
+  duration_ms: 1.474879
+  type: 'test'
+  ...
+# Subtest: Reads 300 MP image/jpeg metadata without allocating pixels
+ok 199 - Reads 300 MP image/jpeg metadata without allocating pixels
+  ---
+  duration_ms: 0.390918
+  type: 'test'
+  ...
+# Subtest: Header preflight rejects a 400 MP PNG before upload
+ok 200 - Header preflight rejects a 400 MP PNG before upload
+  ---
+  duration_ms: 1.044211
+  type: 'test'
+  ...
+# Subtest: Small raster is eligible for a preview, pixel data remains untouched
+ok 201 - Small raster is eligible for a preview, pixel data remains untouched
+  ---
+  duration_ms: 0.994046
+  type: 'test'
+  ...
+# Subtest: WebP VP8X dimensions are read from its 24-bit header
+ok 202 - WebP VP8X dimensions are read from its 24-bit header
+  ---
+  duration_ms: 0.521254
+  type: 'test'
+  ...
+# Subtest: Truncated JPEG returns no dimensions, rather than attempting pixel decode
+ok 203 - Truncated JPEG returns no dimensions, rather than attempting pixel decode
+  ---
+  duration_ms: 0.295334
+  type: 'test'
+  ...
+# Subtest: URL payload contains ONLY image_url and the three existing control fields
+ok 204 - URL payload contains ONLY image_url and the three existing control fields
+  ---
+  duration_ms: 0.267012
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address http://example.test/a.png
+ok 205 - URL preflight rejects unsupported address http://example.test/a.png
+  ---
+  duration_ms: 0.151839
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address javascript:alert(1)
+ok 206 - URL preflight rejects unsupported address javascript:alert(1)
+  ---
+  duration_ms: 0.075694
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address data:image/png;base64,A
+ok 207 - URL preflight rejects unsupported address data:image/png;base64,A
+  ---
+  duration_ms: 0.052198
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address https://user:password@example.test/a.png
+ok 208 - URL preflight rejects unsupported address https://user:password@example.test/a.png
+  ---
+  duration_ms: 0.053611
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address https://example.test/a.png\#x
+ok 209 - URL preflight rejects unsupported address https://example.test/a.png\#x
+  ---
+  duration_ms: 0.048023
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address https://example.test/a\\b
+ok 210 - URL preflight rejects unsupported address https://example.test/a\\b
+  ---
+  duration_ms: 0.038268
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address https://example.test/a b
+ok 211 - URL preflight rejects unsupported address https://example.test/a b
+  ---
+  duration_ms: 0.068633
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address relative.png
+ok 212 - URL preflight rejects unsupported address relative.png
+  ---
+  duration_ms: 0.116355
+  type: 'test'
+  ...
+# Subtest: URL preflight rejects unsupported address 
+ok 213 - URL preflight rejects unsupported address 
+  ---
+  duration_ms: 0.056335
+  type: 'test'
+  ...
+# Subtest: File mode never includes image_url; URL mode cannot be passed to multipart function
+ok 214 - File mode never includes image_url; URL mode cannot be passed to multipart function
+  ---
+  duration_ms: 18.666692
+  type: 'test'
+  ...
+# Subtest: JSON image import uses CSRF and a canonical slash path, without a file field
+ok 215 - JSON image import uses CSRF and a canonical slash path, without a file field
+  ---
+  duration_ms: 4.476307
+  type: 'test'
+  ...
+# Subtest: Guest authentication and CSRF failures are not conflated
+ok 216 - Guest authentication and CSRF failures are not conflated
+  ---
+  duration_ms: 0.15328
+  type: 'test'
+  ...
+# Subtest: Validation and guest errors do not expose a support UUID
+ok 217 - Validation and guest errors do not expose a support UUID
+  ---
+  duration_ms: 0.101964
+  type: 'test'
+  ...
+# Subtest: Unexpected error reference stays available for the collapsed support panel
+ok 218 - Unexpected error reference stays available for the collapsed support panel
+  ---
+  duration_ms: 0.133321
+  type: 'test'
+  ...
+# Subtest: Whole-venue fit preserves aspect and fits both viewport dimensions
+ok 219 - Whole-venue fit preserves aspect and fits both viewport dimensions
+  ---
+  duration_ms: 0.299401
+  type: 'test'
+  ...
+# Subtest: Camera transform round trip
+ok 220 - Camera transform round trip
+  ---
+  duration_ms: 0.102975
+  type: 'test'
+  ...
+# Subtest: Cursor zoom anchors the same world point, not viewport center
+ok 221 - Cursor zoom anchors the same world point, not viewport center
+  ---
+  duration_ms: 0.162614
+  type: 'test'
+  ...
+# Subtest: Zoom clamps to fit and maximum, ignoring invalid factors
+ok 222 - Zoom clamps to fit and maximum, ignoring invalid factors
+  ---
+  duration_ms: 0.193111
+  type: 'test'
+  ...
+# Subtest: Pinch scales AND follows moving midpoint
+ok 223 - Pinch scales AND follows moving midpoint
+  ---
+  duration_ms: 0.171368
+  type: 'test'
+  ...
+# Subtest: Coincident touch points cannot create Infinity or NaN scale
+ok 224 - Coincident touch points cannot create Infinity or NaN scale
+  ---
+  duration_ms: 0.131207
+  type: 'test'
+  ...
+# Subtest: Resize preserves the world focus and relative zoom when not edge-clamped
+ok 225 - Resize preserves the world focus and relative zoom when not edge-clamped
+  ---
+  duration_ms: 0.127642
+  type: 'test'
+  ...
+# Subtest: A resize at overview remains a whole-venue fit
+ok 226 - A resize at overview remains a whole-venue fit
+  ---
+  duration_ms: 0.082164
+  type: 'test'
+  ...
+# Subtest: Sector fit is derived from actual seat coordinates without changing geometry
+ok 227 - Sector fit is derived from actual seat coordinates without changing geometry
+  ---
+  duration_ms: 2.492011
+  type: 'test'
+  ...
+# Subtest: Overview dots stay smaller than local spacing; numbers become possible only close up
+ok 228 - Overview dots stay smaller than local spacing; numbers become possible only close up
+  ---
+  duration_ms: 0.932524
+  type: 'test'
+  ...
+# Subtest: Expanded target areas select the nearest center, never a random overlapping circle
+ok 229 - Expanded target areas select the nearest center, never a random overlapping circle
+  ---
+  duration_ms: 1.963546
+  type: 'test'
+  ...
+# Subtest: Nearest-seat lookup includes unavailable geometry and honours filters
+ok 230 - Nearest-seat lookup includes unavailable geometry and honours filters
+  ---
+  duration_ms: 10.902707
+  type: 'test'
+  ...
+# Subtest: Exact overlapping coordinates are flagged for list selection instead of moving places
+ok 231 - Exact overlapping coordinates are flagged for list selection instead of moving places
+  ---
+  duration_ms: 0.406331
+  type: 'test'
+  ...
+# Subtest: Bad geometry is skipped; coordinates of 0 and 1 are valid
+ok 232 - Bad geometry is skipped; coordinates of 0 and 1 are valid
+  ---
+  duration_ms: 0.306341
+  type: 'test'
+  ...
+# Subtest: Empty map has finite camera geometry and no fake seats
+ok 233 - Empty map has finite camera geometry and no fake seats
+  ---
+  duration_ms: 0.098258
+  type: 'test'
+  ...
+# Subtest: Grid viewport query agrees with a direct geometric filter
+ok 234 - Grid viewport query agrees with a direct geometric filter
+  ---
+  duration_ms: 1.031963
+  type: 'test'
+  ...
+# Subtest: Extreme source aspect ratio does not iterate millions of empty cells
+ok 235 - Extreme source aspect ratio does not iterate millions of empty cells
+  ---
+  duration_ms: 0.121523
+  type: 'test'
+  ...
+# Subtest: Spatial model handles 50,000 test places and culls offscreen positions
+ok 236 - Spatial model handles 50,000 test places and culls offscreen positions
+  ---
+  duration_ms: 296.225317
+  type: 'test'
+  ...
+1..236
+# tests 236
+# suites 0
+# pass 236
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 656.598422

@@ -1,0 +1,13 @@
+{
+  "python_compileall": true,
+  "compose.yaml_yaml_parsed": true,
+  "compose.verify.yaml_yaml_parsed": true,
+  "compose.prod.yaml_yaml_parsed": true,
+  "docs/openapi.yaml_yaml_parsed": true,
+  "scripts/verify_backend.sh_shell_syntax": true,
+  "scripts/check_foundation.sh_shell_syntax": true,
+  "scripts/cron_tickethub.sh_shell_syntax": true,
+  "scripts/backup_db.sh_shell_syntax": true,
+  "infra/postgres/init-app.sh_shell_syntax": true,
+  "infra/docker/entrypoint.sh_shell_syntax": true
+}

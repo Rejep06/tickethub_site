@@ -1,0 +1,16 @@
+.git
+.env
+.env.*
+.venv
+venv
+**/__pycache__
+**/*.pyc
+backend/media
+backend/staticfiles
+docs
+checks
+scripts
+*.zip
+
+backups
+tickethub_media_patch

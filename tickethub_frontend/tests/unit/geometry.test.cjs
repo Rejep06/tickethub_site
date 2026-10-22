@@ -1,0 +1,12 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const path=require('node:path');
+const {relativePoint,rowPoints,clampCoordinate}=require(path.join(process.env.TH_TEST_BUILD,'lib/geometry.js'));
+test('seat coordinates are relative to the scaled image bounds',()=>assert.deepEqual(relativePoint(150,100,{left:50,top:25,width:400,height:300}),{x:.25,y:.25}));
+test('drag outside an image is clamped, not saved out of bounds',()=>assert.deepEqual(relativePoint(-20,900,{left:0,top:0,width:100,height:100}),{x:0,y:1}));
+test('zero dimensions are rejected',()=>assert.throws(()=>relativePoint(0,0,{left:0,top:0,width:0,height:1}),/INVALID_GEOMETRY/));
+test('coordinate clamp preserves boundaries',()=>{assert.equal(clampCoordinate(-1),0);assert.equal(clampCoordinate(2),1);assert.equal(clampCoordinate(.4),.4);});
+test('row interpolation includes both selected endpoints',()=>assert.deepEqual(rowPoints({x:.1,y:.2},{x:.9,y:.6},['1','2','3']),[{number:'1',x:.1,y:.2},{number:'2',x:.5,y:.4},{number:'3',x:.9,y:.6}]));
+test('one seat is placed at the first endpoint',()=>assert.deepEqual(rowPoints({x:0,y:0},{x:1,y:1},['A']),[{number:'A',x:0,y:0}]));
+test('duplicate, empty and more than 500 row numbers are rejected',()=>{for(const numbers of [[],['1','1'],[' '],Array.from({length:501},(_,i)=>String(i))])assert.throws(()=>rowPoints({x:0,y:0},{x:1,y:1},numbers),/INVALID_ROW/);});
+test('invalid row geometry is rejected before the API write',()=>{for(const x of [-1,2,NaN,Infinity])assert.throws(()=>rowPoints({x,y:0},{x:1,y:1},['1']),/INVALID_GEOMETRY/);});

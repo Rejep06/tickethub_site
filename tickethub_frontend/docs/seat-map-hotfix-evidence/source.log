@@ -1,0 +1,5 @@
+
+> tickethub-frontend@1.0.0 check:source
+> node scripts/check-source.mjs
+
+132 TypeScript sources: 0 syntax/local-import errors. External libraries NOT type-checked.

@@ -1,0 +1,15 @@
+{
+  "scope": "Real Chromium UI with stubbed fetch responses, NOT Django/HTTP/DB verification",
+  "checks": [
+    "editor loaded without JavaScript exceptions",
+    "generation preview creates 128 local seats without saving",
+    "Save constructs one versioned batch with 128 seats and a CSRF header (stubbed fetch)",
+    "sector/row filter selects 16 seats",
+    "rename changes only selected seats locally",
+    "undo restores saved labels",
+    "canvas zoom works",
+    "all mutation paths retain trailing slash and CSRF header"
+  ],
+  "passed": 8,
+  "javascript_errors": []
+}

@@ -1,0 +1,5 @@
+typecheck exit=2
+lint exit=127
+test:components exit=127
+build exit=127
+test:e2e exit=1

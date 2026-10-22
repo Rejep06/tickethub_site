@@ -1,0 +1,33 @@
+# Overlay for the ATTACHED backend compose.prod.yaml.
+# Execute from the backend root, with the two repositories located side by side.
+services:
+  frontend:
+    build:
+      context: ../tickethub_frontend
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:?Set an approved Node 24 image digest}
+        NEXT_PUBLIC_APP_URL: ${SITE_URL:?Set the public HTTPS site URL}
+        BACKEND_ORIGIN: http://backend:8000
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_APP_URL: ${SITE_URL}
+      API_INTERNAL_URL: http://backend:8000/api/v1/
+      BACKEND_ORIGIN: http://backend:8000
+    expose:
+      - "3000"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      # Root redirect checks the Next process without requiring a business API to be healthy.
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/',{redirect:'manual'}).then(r=>process.exit(r.status<400?0:1)).catch(()=>process.exit(1))"]
+      interval: 20s
+      timeout: 5s
+      start_period: 40s
+      retries: 3
+  nginx:
+    volumes:
+      - ../tickethub_frontend/infra/nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
+    depends_on:
+      frontend:
+        condition: service_healthy

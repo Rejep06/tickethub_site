@@ -1,0 +1,6 @@
+Command: npm run test:e2e
+
+> tickethub-frontend@1.0.0 test:e2e
+> playwright test
+
+error: unknown command 'test'

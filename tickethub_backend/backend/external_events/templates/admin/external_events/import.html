@@ -1,0 +1,17 @@
+{% extends "admin/base_site.html" %}{% load static %}
+{% block content %}
+<div style="max-width:1000px">
+<p>Вставьте ссылку на событие. Будут подготовлены непубличные черновики дат, схема и read-only наличие PortalBilet. Существующие заказы и собственный запас TicketUnit не изменяются.</p>
+<p><strong>Безопасность продажи:</strong> схема и внешнее наличие импортируются, но это не резерв у PortalBilet. Внешние места по умолчанию выключены для локальной продажи, а собственные TicketUnit автоматически не создаются.</p>
+<form id="pb-form">{% csrf_token %}
+<label for="pb-url">Ссылка на мероприятие PortalBilet</label>
+<input id="pb-url" type="url" required maxlength="600" placeholder="https://portalbilet.ru/город/мероприятие" style="width:100%;padding:12px;margin:12px 0;box-sizing:border-box">
+<button id="pb-preview" type="submit" class="button">Предпросмотр</button>
+<button id="pb-import" type="button" class="button">Импортировать черновики</button>
+</form>
+<p id="pb-status" role="status" aria-live="polite"></p>
+<div id="pb-result"></div>
+<p><a href="{{ import_config.plans_admin }}">Схемы площадок и визуальный редактор</a></p>
+{{ import_config|json_script:"pb-config" }}
+</div><script src="{% static 'external_events/import.js' %}" defer></script>
+{% endblock %}

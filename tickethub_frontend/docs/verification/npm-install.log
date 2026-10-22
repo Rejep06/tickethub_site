@@ -1,0 +1,3 @@
+Command: npm install --fetch-retries=0 --fetch-timeout=6000 --no-audit --no-fund
+
+TIMEOUT after 18s. No successful install/build inferred.

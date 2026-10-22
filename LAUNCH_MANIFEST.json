@@ -1,0 +1,438 @@
+{
+  "release": "2026-10-20-catalog-launch",
+  "base_archive": "tickethub.zip",
+  "base_archive_sha256": "73d427c09330fcabbd096ec6b1f7a528443a0be02e07439476f47b548303046e",
+  "update_scope": [
+    "backend",
+    "frontend",
+    "deployment"
+  ],
+  "requires_migration": "events.0004_category_images_publication",
+  "migration_note": "Unpublishes invalid imported events; data is preserved. Back up DB/media before migration.",
+  "no_dependencies_changed": true,
+  "unchanged_critical_files": [
+    "tickethub_frontend/package.json",
+    "tickethub_frontend/package-lock.json",
+    "tickethub_frontend/src/features/seat-map/seat-viewport.tsx",
+    "tickethub_frontend/src/lib/seat-viewport.ts",
+    "tickethub_frontend/src/features/staff/seat-editor.tsx",
+    "tickethub_frontend/src/lib/seat-editor.ts"
+  ],
+  "removed_files": [],
+  "changed_files": [
+    {
+      "path": ".env.production.example",
+      "sha256": "1f8e25bb5f8268c4085a26cd43c9b725dcf4bdc816c71e0b6472cfb9fa99aa30",
+      "bytes": 1030,
+      "new": true
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "67a8551a9dcb757ae892ee4c7684bc6a7bcb9fd89893235f04cf2093ac22559f",
+      "bytes": 247,
+      "new": true
+    },
+    {
+      "path": "DEPLOY_tickethub.md",
+      "sha256": "76b29e30178b406de637d1a0b2ee89c2b0282e09ac21986bb19109c3bd0cdf71",
+      "bytes": 39872,
+      "new": true
+    },
+    {
+      "path": "README_LAUNCH.md",
+      "sha256": "7dad636f41f3d0c7cf0def0b5cd1754b87e1d4e0df90401e0f37d840eae97b2a",
+      "bytes": 2087,
+      "new": true
+    },
+    {
+      "path": "UPDATE_tickethub_launch.md",
+      "sha256": "27c51424e01dc19363ccdc4ca7b631d3d342be4f66104dd731bdcf2c52025b62",
+      "bytes": 12562,
+      "new": true
+    },
+    {
+      "path": "VERIFICATION_tickethub_launch.md",
+      "sha256": "a5f2d50e65637dff480da7404c256f05e268f1cc220d15fbbcef50841ac40698",
+      "bytes": 11122,
+      "new": true
+    },
+    {
+      "path": "compose.check.yml",
+      "sha256": "1de3a2741ca45615e2a8bb38e9978039ef33375e116145321e173bfbcbe8a853",
+      "bytes": 1152,
+      "new": true
+    },
+    {
+      "path": "compose.production.yml",
+      "sha256": "f0ac900fef85be696b83e943103b2dfc5dcccdc83816b8f9474f55a8084e8bdc",
+      "bytes": 5514,
+      "new": true
+    },
+    {
+      "path": "deploy/backup.sh",
+      "sha256": "69dc16d3551c62172d3209c63b0145386fdc045e8333f46ac99f8424a4b7655e",
+      "bytes": 1070,
+      "new": true
+    },
+    {
+      "path": "deploy/create_production_env.py",
+      "sha256": "6ad3d639133bd299691792e995f9cdf9e1165b2b33327ae7ef3e0ad04f4e6ba6",
+      "bytes": 1562,
+      "new": true
+    },
+    {
+      "path": "deploy/env_value.py",
+      "sha256": "ee4510974320cc2be73d32f7a681bd8d5e2dc895660d7170a7bc1e44fba69f4b",
+      "bytes": 426,
+      "new": true
+    },
+    {
+      "path": "deploy/lock-python.sh",
+      "sha256": "b0126cc18eccfc11888e950e2358efb2ff629fc6fdcb33acfbf55ff763163b4a",
+      "bytes": 836,
+      "new": true
+    },
+    {
+      "path": "deploy/nginx-bootstrap.conf",
+      "sha256": "d7a5146352b4a45af032c732c7c059c2f0fd8394a6835799ca98d8178f8a94ff",
+      "bytes": 216,
+      "new": true
+    },
+    {
+      "path": "deploy/nginx.conf.template",
+      "sha256": "6cf53ed5ed813604f36190f7434475fddd8592f465213e99acc7778c9569e52b",
+      "bytes": 3324,
+      "new": true
+    },
+    {
+      "path": "deploy/prod.sh",
+      "sha256": "7a2afe8249bd5f8646caf9fb2252e56dd81122b2356631d754c5813486a6ffaf",
+      "bytes": 240,
+      "new": true
+    },
+    {
+      "path": "deploy/renew-cert.sh",
+      "sha256": "8ebbeb3897dc30c7604bf32a7264861c1d9287899ae18b1738471b3369f78311",
+      "bytes": 262,
+      "new": true
+    },
+    {
+      "path": "deploy/scripts/scheduler.py",
+      "sha256": "52a42d2268f763d84aa78d85989ce00bbd0266921a9eea02c1ea0f0fdd132634",
+      "bytes": 1004,
+      "new": true
+    },
+    {
+      "path": "deploy/tests/test_config.py",
+      "sha256": "a6335e024d924ff306eaf2c02ac1d36cba9b94494bca26438595718d7c500147",
+      "bytes": 4479,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/.dockerignore",
+      "sha256": "0b79084905dd4e7e2b68b5513487c52b2e578ebe80225a67a1f7ae7e5c8b5bfa",
+      "bytes": 143,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/README.md",
+      "sha256": "66a62304765a507f36572dca0dad5517fa0a4d88e657769762272fe8336771a6",
+      "bytes": 16909,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/SHA256SUMS",
+      "sha256": "68af0907adcebd7cf2d75d8f0fb0664ba750f37f0dde2f03051b53a85cc2a259",
+      "bytes": 47153,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/backend/events/admin.py",
+      "sha256": "1c5ba0f51d4a12730ead7e06293174e62354b338440a31b4a6fa98dd59147c22",
+      "bytes": 1603,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/backend/events/management/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/management/commands/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/management/commands/catalog_audit.py",
+      "sha256": "12061c04dffe3d873c1b1de86a6633443a697131044aa767d32cef0007b2c566",
+      "bytes": 2478,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/management/commands/seed_categories.py",
+      "sha256": "3273962a5bcdfcc76e08e4c32c03f02200f558b67fc57d0887e2f09ddb4cf898",
+      "bytes": 1337,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/migrations/0004_category_images_publication.py",
+      "sha256": "53fcd1a36acfc9d4300c62725d504383b17f02767ea74e73ba7b36c9a798e043",
+      "bytes": 2321,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/models.py",
+      "sha256": "cd5a5300b5661ee552df2f1a0d5764e8a1e877d53824000b14d1e2528783552f",
+      "bytes": 9165,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/backend/events/publication.py",
+      "sha256": "3991779fbd29c950e7ca19a17ba8d5c7e0e253e7bbdf79116c1dc7ad987409bf",
+      "bytes": 2812,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/serializers.py",
+      "sha256": "ab167be16e11b57fa1bdeed69607c19e13f0c00b054c99acae8d436036874cd0",
+      "bytes": 4468,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/backend/events/services.py",
+      "sha256": "14ff3bef0d0b4495c27ad3305eab694f7d6d9ca8aed8812c2b8475f594a15623",
+      "bytes": 5971,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/backend/events/tests/test_launch_catalog.py",
+      "sha256": "c0b6e8c97489d87c3a012087e1d9e307c443c6d215a678728fe9c8ec13f6d332",
+      "bytes": 6719,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/tests/test_publication_rules.py",
+      "sha256": "5a8a98eb906d102588da22187f36740ba0cb817df1865cb8aae487910b39fc7c",
+      "bytes": 3041,
+      "new": true
+    },
+    {
+      "path": "tickethub_backend/backend/events/views.py",
+      "sha256": "a80fcb1f39bb61f152bae680db0180b40dc007882ae88a578fc849508fdfc8a8",
+      "bytes": 6451,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/backend/external_events/services.py",
+      "sha256": "673f1ba3e0bc1799dbb324a5f2069e68d118a3a9649f5674bf126575883627ff",
+      "bytes": 28276,
+      "new": false
+    },
+    {
+      "path": "tickethub_backend/docs/catalog-launch-api.md",
+      "sha256": "8d853238f4d2cde501ae03a2d21d8393279d91c815d5fa2dab701cc0f7411c1d",
+      "bytes": 2967,
+      "new": true
+    },
+    {
+      "path": "tickethub_frontend/.env.example",
+      "sha256": "a56738536e618549e2d7a4ff94791f17b0ff1dd9aedf479e802a7547818966ec",
+      "bytes": 445,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/README.md",
+      "sha256": "71d90139289f9b388eb6f0208bec67d5a25b0a89fd5d4ed33c1e77b4ea771ea5",
+      "bytes": 15786,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/SHA256SUMS",
+      "sha256": "41d06aa1c4a9d09c24a7c22e6dfe4d8856a62f2994634404ee65a19a9ce0bdab",
+      "bytes": 27328,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/docs/backend-openapi.json",
+      "sha256": "973f49fdddb9a47a2599f5d7d87bb75a33bae419ee7239642288e09697bec4f2",
+      "bytes": 700554,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/public/apple-touch-icon.png",
+      "sha256": "9b1c345796eb0b9962ed1a8c06f2fe79d73fb4afce46aaabf63909c037caeb90",
+      "bytes": 12344,
+      "new": true
+    },
+    {
+      "path": "tickethub_frontend/public/favicon.ico",
+      "sha256": "dfa077ed045cf7e9b08e6acf55211ebd596d9647b9a84fbf8a6c3ff4142eccd5",
+      "bytes": 3444,
+      "new": true
+    },
+    {
+      "path": "tickethub_frontend/scripts/test-unit.mjs",
+      "sha256": "5722bd5cf63fddb8801b227e443b38558e275e9d2b01e1e52cb3b2445c76d092",
+      "bytes": 1720,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/app/[locale]/(site)/[information]/page.tsx",
+      "sha256": "1a8b8f0ba80844cb44b2e857193ceb1144c4f08cb14ef1086711dcf62077989c",
+      "bytes": 2062,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/app/[locale]/(site)/page.tsx",
+      "sha256": "02fbf6625412d330dcda3ba8828b9e493c708208df72366b75741f9bb5d7116e",
+      "bytes": 1102,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/app/layout.tsx",
+      "sha256": "13e28632d850398a0c83cd25d406250746fa20149e1195aa850d8ea288a4c377",
+      "bytes": 1078,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/components/brand-moment.tsx",
+      "sha256": "82df9e2adf43d1f3e8a482b5ac954a4617d1a7039489a7146780cfabb6528191",
+      "bytes": 1066,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/components/providers.tsx",
+      "sha256": "ee9486550ee0cef1325c18228e3ba5ce977eb8989ab0461e6a734e5f0b6f1c8d",
+      "bytes": 1161,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/components/public-layout.tsx",
+      "sha256": "8f24b58cda687a630347a21b8d17b99114cfae9cc37553817e3355ec45f79485",
+      "bytes": 5560,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/catalog/analytics.tsx",
+      "sha256": "7e394f4b2bf1ddf867c50ba78dd2fd2061f99fbee2408d088f80cdbc78779155",
+      "bytes": 3147,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/catalog/catalog.tsx",
+      "sha256": "b533d798c724a71d1b7c5657ff5293ad2aaf0048da86496d76258c58c8bbb582",
+      "bytes": 8700,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/catalog/category-landing.tsx",
+      "sha256": "9b9b9d41dfb8f51b390dc27edd3d1e089ef85a3136e31f2178ee9eb68ab93131",
+      "bytes": 3594,
+      "new": true
+    },
+    {
+      "path": "tickethub_frontend/src/features/catalog/event-card.tsx",
+      "sha256": "560b7b27c548118e723769cc5fa73d594cc676349ea249b2f5e6e75c4e35aac3",
+      "bytes": 3001,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/catalog/event-detail.tsx",
+      "sha256": "cb04d656802c1e19b7cf7dd9291f375e02bc657c34e19eba10f98608cd46b279",
+      "bytes": 14007,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/catalog/home.tsx",
+      "sha256": "466eebdc91468c4d827e44d8976a9db79d4a3c54a2872bbdca6326c56575c1a8",
+      "bytes": 10598,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/staff/image-upload.tsx",
+      "sha256": "9f40452acd2099c746bfb273593d4804867dbba3dd327e4ea5d04340d24a0c16",
+      "bytes": 13002,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/staff/resource-page.tsx",
+      "sha256": "d830814c4d0d9abd1e392299d61ea16bbc3d72bf4259a9c33c171914d2a4e82c",
+      "bytes": 18488,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/features/staff/resources.ts",
+      "sha256": "4a5f84e87b8a30c5e17ab18d71770d4163ec94c9d991ab21bc65ba5a06ffb208",
+      "bytes": 9707,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/i18n/config.ts",
+      "sha256": "8b14c27c69d0e17191a8a6b7f5acc2ca81c4478203d6a0d16fced9476c6e6b86",
+      "bytes": 119,
+      "new": true
+    },
+    {
+      "path": "tickethub_frontend/src/i18n/request.ts",
+      "sha256": "e34a9c30debf89ce56c12cb415dd602918e5d4730db43771f04de00e0fce84c8",
+      "bytes": 378,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/lib/analytics-preference.ts",
+      "sha256": "cba60aa9fa9f27a5cd11b4d9fc512d8be92a772de09b0b9e766d3b102824a6c0",
+      "bytes": 818,
+      "new": true
+    },
+    {
+      "path": "tickethub_frontend/src/lib/api/generated.ts",
+      "sha256": "453eb571dce2eb0dd9daf8c60cc950dc3a9dcbb5e1350c5954b1b0c6c9bdf706",
+      "bytes": 41591,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/lib/api/server.ts",
+      "sha256": "d1ecb0caa276bd05f7c5133b906b7f8ace956ac3c69b71e3d2590f386bf55fc1",
+      "bytes": 1128,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/lib/catalog.ts",
+      "sha256": "c4132809898e0680ab081616e5e5cfbf94c3f71c9f0a06504897818aae1f607a",
+      "bytes": 1552,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/messages/en.json",
+      "sha256": "5dc00b77f70f740cdf6b6b91030092eb28c60600368e5539c74b78bfbae5c2ba",
+      "bytes": 28113,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/messages/ru.json",
+      "sha256": "06c1eb301f1c9d72c1dc4333bd81c464581d07ec7d95ed0961534a5c2b8f953a",
+      "bytes": 42661,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/styles/globals.css",
+      "sha256": "a8c5e5f00b6817289ed537b83b8c8aeb8d6e5591416d26e3a80631ce95ee43e1",
+      "bytes": 413,
+      "new": false
+    },
+    {
+      "path": "tickethub_frontend/src/styles/launch-polish.css",
+      "sha256": "c56578e5374520116154c1c3384fae599509212502c1079c6b389518d1774a45",
+      "bytes": 8022,
+      "new": true
+    },
+    {
+      "path": "tickethub_frontend/tests/unit/launch-catalog.test.cjs",
+      "sha256": "ad9fefb20a7afdb115df6806d8c108ee9e099dcbb5f8b499078e96c174e69669",
+      "bytes": 2870,
+      "new": true
+    }
+  ]
+}

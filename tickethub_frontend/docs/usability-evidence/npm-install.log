@@ -1,0 +1,16 @@
+npm verbose cli /opt/nvm/versions/node/v22.16.0/bin/node /opt/nvm/versions/node/v22.16.0/bin/npm
+npm info using npm@10.9.2
+npm info using node@v22.16.0
+npm verbose title npm install
+npm verbose argv "install" "--include" "optional" "--fetch-retries" "0" "--fetch-timeout" "8000" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:/home/oai/.npm/_logs/2026-10-07T18_28_21_074Z-
+npm verbose logfile /home/oai/.npm/_logs/2026-10-07T18_28_21_074Z-debug-0.log
+npm http fetch GET https://registry.npmjs.org/next attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/react attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/react-dom attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/next-intl attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/@tanstack%2freact-query attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/react-hook-form attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/zod attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/@hookform%2fresolvers attempt 1 failed with EAI_AGAIN
+npm http fetch GET https://registry.npmjs.org/lucide-react attempt 1 failed with EAI_AGAIN

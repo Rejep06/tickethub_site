@@ -1,0 +1,62 @@
+{% extends "admin/base_site.html" %}{% load static %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'venues/editor.css' %}">{% endblock %}
+{% block content %}
+<div id="layout-editor">
+  {% csrf_token %}{{ editor_config|json_script:"layout-config" }}
+  <div class="le-top"><div><strong id="le-name">{{ plan.name }}</strong><span id="le-state"></span></div>
+    <div><button id="le-undo" type="button">Отменить действие</button><button id="le-fit" type="button">Показать всё</button>
+      <button id="le-clone" type="button">Создать копию</button><button id="le-save" type="button" class="le-primary">Сохранить</button>
+      <a href="{{ editor_config.change_url }}">Карточка схемы</a></div>
+  </div>
+  <div id="le-message" role="status" aria-live="polite">Загрузка схемы…</div>
+  <div class="le-body">
+    <aside class="le-sidebar">
+      <h2>Добавить блок мест</h2>
+      <form id="le-generator">
+        <label>Сектор<input name="sector" value="A" maxlength="50" required></label>
+        <div class="le-pair"><label>Рядов<input name="rows" type="number" value="5" min="1" max="100" required></label>
+        <label>Мест в ряду<input name="seats_per_row" type="number" value="12" min="1" max="500" required></label></div>
+        <div class="le-pair"><label>Первый ряд<input name="row_start" type="number" value="1" min="1" required></label>
+        <label>Первое место<input name="seat_start" type="number" value="1" min="1" required></label></div>
+        <label>Нумерация<select name="seat_step"><option value="1">1, 2, 3…</option><option value="2">1, 3, 5… / 2, 4, 6…</option><option value="-1">В обратном порядке, шаг 1</option><option value="-2">В обратном порядке, шаг 2</option></select></label>
+        <div class="le-pair"><label>X, %<input name="x" type="number" step="0.1" value="15" required></label>
+        <label>Y, %<input name="y" type="number" step="0.1" value="15" required></label></div>
+        <div class="le-pair"><label>Ширина, %<input name="width" type="number" value="50" step="0.1" min="0" required></label>
+        <label>Шаг рядов, %<input name="row_spacing" type="number" value="4" step="0.1" min="0.1" required></label></div>
+        <div class="le-pair"><label>Угол, °<input name="angle" type="number" value="0" step="1" required></label>
+        <label>Изгиб, %<input name="curve" type="number" value="0" step="0.1" required></label></div>
+        <label>Проходы после позиций<input name="aisles_after" placeholder="Например: 6, 12"></label>
+        <p class="le-hint">Проход разделяет группы соседства. Расстояние между блоками можно увеличить перемещением.</p>
+        <button type="submit">Добавить в черновик</button>
+      </form>
+      <h2>Выделение</h2>
+      <label>Сектор<select id="le-sector"><option value="">Все</option></select></label>
+      <label>Ряд<select id="le-row"><option value="">Все</option></select></label>
+      <button id="le-select" type="button">Выделить по фильтру</button>
+      <button id="le-clear" type="button">Снять выделение</button>
+      <p id="le-selection">Ничего не выбрано</p>
+      <div class="le-pair"><label>Поворот, °<input id="le-rotation" type="number" value="15"></label>
+      <button id="le-rotate" type="button">Повернуть</button></div>
+      <button id="le-mirror" type="button">Отразить по горизонтали</button>
+      <div class="le-pair"><label>Новое имя сектора<input id="le-new-sector" maxlength="50"></label>
+      <button id="le-rename" type="button">Переименовать</button></div>
+      <button id="le-delete" type="button" class="le-danger">Удалить выделенные</button>
+      <h2>Файлы</h2>
+      <label>Добавить места из CSV<input id="le-csv" type="file" accept=".csv,text/csv"></label>
+      <p class="le-hint">Колонки: sector,row,number,x,y. Координаты 0…1. Загрузка не сохраняет изменения автоматически.</p>
+      <button id="le-export" type="button">Экспорт CSV</button>
+      <h2>Фон</h2>
+      <p class="le-hint">В карточке схемы можно выбрать файл или вставить прямую HTTPS-ссылку. PNG/JPEG/WebP — до 20 000 px, 300 МП и 100 МиБ; статический SVG — до 10 МиБ. Для импортированной схемы автоматически показывается внешний фон и серый слой всех координат; если фон недоступен, геометрия остаётся на нейтральном холсте.</p>
+      <label>Яркость фона<input id="le-opacity" type="range" min="0" max="100" value="65"></label>
+      <label><input id="le-grid" type="checkbox" checked> Показывать сетку</label>
+      <button id="le-publish" type="button">Опубликовать схему</button>
+    </aside>
+    <div class="le-workspace">
+      <div class="le-help">Колесо — масштаб · Alt + перетаскивание — холст · рамка — выделение · Shift — добавить · перетаскивание места — перемещение</div>
+      <div id="le-canvas-wrap"><canvas id="le-canvas" tabindex="0" aria-label="Редактор мест схемы"></canvas><div id="le-tooltip" hidden></div></div>
+      <div class="le-footer"><span id="le-count"></span><span id="le-dirty"></span></div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'venues/editor.js' %}" defer></script>
+{% endblock %}

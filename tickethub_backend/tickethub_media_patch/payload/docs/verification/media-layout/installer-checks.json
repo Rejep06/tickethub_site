@@ -1,0 +1,13 @@
+{
+  "scope": "Executed installer on temporary source copies, no DB",
+  "passed": 7,
+  "checks": [
+    "preflight does not change source",
+    "applies with prior fix, preserves .env, compose.yaml, local Event model, events/0003 and unrelated source",
+    "backup and application record exist",
+    "second application is idempotent",
+    "unknown production function changes stop all replacements",
+    "existing alternate venues/0005 is not overwritten or branched",
+    "damaged payload is rejected before any replacement"
+  ]
+}

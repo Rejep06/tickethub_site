@@ -1,0 +1,84 @@
+[
+  {
+    "name": "migration-check",
+    "command": [
+      "python",
+      "manage.py",
+      "makemigrations",
+      "--check",
+      "--dry-run",
+      "--settings=config.settings.test"
+    ],
+    "exit_code": 1,
+    "status": "BLOCKED"
+  },
+  {
+    "name": "migrate",
+    "command": [
+      "python",
+      "manage.py",
+      "migrate",
+      "--noinput",
+      "--settings=config.settings.test"
+    ],
+    "exit_code": 1,
+    "status": "BLOCKED"
+  },
+  {
+    "name": "django-check",
+    "command": [
+      "python",
+      "manage.py",
+      "check",
+      "--settings=config.settings.test"
+    ],
+    "exit_code": 1,
+    "status": "BLOCKED"
+  },
+  {
+    "name": "django-tests",
+    "command": [
+      "python",
+      "manage.py",
+      "test",
+      "--noinput",
+      "--verbosity=2",
+      "--settings=config.settings.test"
+    ],
+    "exit_code": 1,
+    "status": "BLOCKED"
+  },
+  {
+    "name": "runserver",
+    "command": [
+      "python",
+      "manage.py",
+      "runserver",
+      "127.0.0.1:8000",
+      "--noreload",
+      "--settings=config.settings.test"
+    ],
+    "exit_code": 1,
+    "status": "BLOCKED"
+  },
+  {
+    "name": "seed-demo",
+    "command": [
+      "python",
+      "manage.py",
+      "seed_demo",
+      "--settings=config.settings.test"
+    ],
+    "exit_code": 1,
+    "status": "BLOCKED"
+  },
+  {
+    "name": "docker-verify",
+    "command": [
+      "sh",
+      "scripts/verify_backend.sh"
+    ],
+    "exit_code": 1,
+    "status": "BLOCKED"
+  }
+]

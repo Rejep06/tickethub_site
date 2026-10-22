@@ -1,0 +1,5 @@
+
+> tickethub-frontend@1.0.0 check:translations
+> node scripts/check-translations.mjs
+
+RU/EN: 439 matching keys, matching ICU parameter names, all literal t() keys present.

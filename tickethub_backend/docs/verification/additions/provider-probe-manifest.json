@@ -1,0 +1,14 @@
+{
+  "url": "https://portalbilet.ru/sochi/match-khk-sochi-spartak-kontinentalnaia-khokkeinaia-liga-2",
+  "captured_at": "2026-10-06T21:26:23.495483+00:00",
+  "resources": {},
+  "errors": [
+    {
+      "resource": "page-data",
+      "code": "PROVIDER_DNS",
+      "message": "Не удалось разрешить DNS-имя источника."
+    }
+  ],
+  "mapping_verified": false,
+  "status": "FAILED"
+}

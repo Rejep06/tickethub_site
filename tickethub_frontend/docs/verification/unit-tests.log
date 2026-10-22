@@ -1,0 +1,574 @@
+Command: npm test
+
+> tickethub-frontend@1.0.0 test
+> node scripts/test-unit.mjs
+
+Strict domain-module type check passed (13 modules; TypeScript 5.8.3). This is NOT an application build.
+TAP version 13
+# Subtest: Read typed JSON and empty successful responses
+ok 1 - Read typed JSON and empty successful responses
+  ---
+  duration_ms: 20.547668
+  type: 'test'
+  ...
+# Subtest: Backend error preserves code, field details and request id
+ok 2 - Backend error preserves code, field details and request id
+  ---
+  duration_ms: 0.807046
+  type: 'test'
+  ...
+# Subtest: HTML proxy errors never surface a traceback as a message
+ok 3 - HTML proxy errors never surface a traceback as a message
+  ---
+  duration_ms: 0.359943
+  type: 'test'
+  ...
+# Subtest: Malformed successful response is not fake success
+ok 4 - Malformed successful response is not fake success
+  ---
+  duration_ms: 0.251419
+  type: 'test'
+  ...
+# Subtest: 429 captures server Retry-After
+ok 5 - 429 captures server Retry-After
+  ---
+  duration_ms: 0.606373
+  type: 'test'
+  ...
+# Subtest: GET includes session, locale, cache protection and request id
+ok 6 - GET includes session, locale, cache protection and request id
+  ---
+  duration_ms: 1.203584
+  type: 'test'
+  ...
+# Subtest: Mutation acquires CSRF, includes session and idempotency key
+ok 7 - Mutation acquires CSRF, includes session and idempotency key
+  ---
+  duration_ms: 1.064033
+  type: 'test'
+  ...
+# Subtest: CSRF token is fetched again after login rotation
+ok 8 - CSRF token is fetched again after login rotation
+  ---
+  duration_ms: 1.53316
+  type: 'test'
+  ...
+# Subtest: Failed CSRF prevents any mutation
+ok 9 - Failed CSRF prevents any mutation
+  ---
+  duration_ms: 0.461745
+  type: 'test'
+  ...
+# Subtest: File upload does not set a broken JSON content type
+ok 10 - File upload does not set a broken JSON content type
+  ---
+  duration_ms: 0.747716
+  type: 'test'
+  ...
+# Subtest: Network failure is explicit and not retried silently
+ok 11 - Network failure is explicit and not retried silently
+  ---
+  duration_ms: 0.264869
+  type: 'test'
+  ...
+# Subtest: Permission status 401 is not converted to success
+ok 12 - Permission status 401 is not converted to success
+  ---
+  duration_ms: 0.421765
+  type: 'test'
+  ...
+# Subtest: Permission status 403 is not converted to success
+ok 13 - Permission status 403 is not converted to success
+  ---
+  duration_ms: 0.513524
+  type: 'test'
+  ...
+# Subtest: External and traversal API paths are rejected
+ok 14 - External and traversal API paths are rejected
+  ---
+  duration_ms: 0.278079
+  type: 'test'
+  ...
+# Subtest: 409 seat conflict retains exact backend code
+ok 15 - 409 seat conflict retains exact backend code
+  ---
+  duration_ms: 0.963803
+  type: 'test'
+  ...
+# Subtest: Contract-level buyer flow: OTP → profile → preview → hold → order
+ok 16 - Contract-level buyer flow: OTP → profile → preview → hold → order
+  ---
+  duration_ms: 47.530565
+  type: 'test'
+  ...
+# Subtest: Staff finance and delivery use action endpoints, expected version and exact amounts
+ok 17 - Staff finance and delivery use action endpoints, expected version and exact amounts
+  ---
+  duration_ms: 7.259858
+  type: 'test'
+  ...
+# Subtest: Refund settlement is separate from approval and uses the order version
+ok 18 - Refund settlement is separate from approval and uses the order version
+  ---
+  duration_ms: 1.919863
+  type: 'test'
+  ...
+# Subtest: seat coordinates are relative to the scaled image bounds
+ok 19 - seat coordinates are relative to the scaled image bounds
+  ---
+  duration_ms: 1.695145
+  type: 'test'
+  ...
+# Subtest: drag outside an image is clamped, not saved out of bounds
+ok 20 - drag outside an image is clamped, not saved out of bounds
+  ---
+  duration_ms: 0.197828
+  type: 'test'
+  ...
+# Subtest: zero dimensions are rejected
+ok 21 - zero dimensions are rejected
+  ---
+  duration_ms: 0.420243
+  type: 'test'
+  ...
+# Subtest: coordinate clamp preserves boundaries
+ok 22 - coordinate clamp preserves boundaries
+  ---
+  duration_ms: 0.200052
+  type: 'test'
+  ...
+# Subtest: row interpolation includes both selected endpoints
+ok 23 - row interpolation includes both selected endpoints
+  ---
+  duration_ms: 0.49121
+  type: 'test'
+  ...
+# Subtest: one seat is placed at the first endpoint
+ok 24 - one seat is placed at the first endpoint
+  ---
+  duration_ms: 0.169345
+  type: 'test'
+  ...
+# Subtest: duplicate, empty and more than 500 row numbers are rejected
+ok 25 - duplicate, empty and more than 500 row numbers are rejected
+  ---
+  duration_ms: 1.396284
+  type: 'test'
+  ...
+# Subtest: invalid row geometry is rejected before the API write
+ok 26 - invalid row geometry is rejected before the API write
+  ---
+  duration_ms: 0.28572
+  type: 'test'
+  ...
+# Subtest: Retry reuses the same UUID for an identical payload
+ok 27 - Retry reuses the same UUID for an identical payload
+  ---
+  duration_ms: 12.500655
+  type: 'test'
+  ...
+# Subtest: Object key order and omitted undefined do not change request identity
+ok 28 - Object key order and omitted undefined do not change request identity
+  ---
+  duration_ms: 11.441298
+  type: 'test'
+  ...
+# Subtest: Changed money cannot reuse an unresolved operation
+ok 29 - Changed money cannot reuse an unresolved operation
+  ---
+  duration_ms: 1.687202
+  type: 'test'
+  ...
+# Subtest: Storage contains only UUID and hash, not contacts
+ok 30 - Storage contains only UUID and hash, not contacts
+  ---
+  duration_ms: 1.576716
+  type: 'test'
+  ...
+# Subtest: Corrupt stored attempt does not silently create a new key
+ok 31 - Corrupt stored attempt does not silently create a new key
+  ---
+  duration_ms: 1.068139
+  type: 'test'
+  ...
+# Subtest: Ambiguous 5xx retains the key and technical retry succeeds once
+ok 32 - Ambiguous 5xx retains the key and technical retry succeeds once
+  ---
+  duration_ms: 31.004977
+  type: 'test'
+  ...
+# Subtest: Definitive validation error allows a corrected new attempt
+ok 33 - Definitive validation error allows a corrected new attempt
+  ---
+  duration_ms: 2.080563
+  type: 'test'
+  ...
+# Subtest: Idempotency conflict is not automatically forgotten
+ok 34 - Idempotency conflict is not automatically forgotten
+  ---
+  duration_ms: 4.291462
+  type: 'test'
+  ...
+# Subtest: Lost hold response can be retried after reload without a new preview
+ok 35 - Lost hold response can be retried after reload without a new preview
+  ---
+  duration_ms: 6.815162
+  type: 'test'
+  ...
+# Subtest: Unavailable seat clears pending hold but not selection
+ok 36 - Unavailable seat clears pending hold but not selection
+  ---
+  duration_ms: 4.057891
+  type: 'test'
+  ...
+# Subtest: Logout clears only Tickethub private tab state
+ok 37 - Logout clears only Tickethub private tab state
+  ---
+  duration_ms: 0.249967
+  type: 'test'
+  ...
+# Subtest: RUB is formatted from kopecks, not rubles
+ok 38 - RUB is formatted from kopecks, not rubles
+  ---
+  duration_ms: 19.2078
+  type: 'test'
+  ...
+# Subtest: English formatting keeps RUB
+ok 39 - English formatting keeps RUB
+  ---
+  duration_ms: 0.834888
+  type: 'test'
+  ...
+# Subtest: Unknown money is not represented as zero
+ok 40 - Unknown money is not represented as zero
+  ---
+  duration_ms: 0.178239
+  type: 'test'
+  ...
+# Subtest: Zero and cents are not lost
+ok 41 - Zero and cents are not lost
+  ---
+  duration_ms: 0.413473
+  type: 'test'
+  ...
+# Subtest: Negative financial results remain visible
+ok 42 - Negative financial results remain visible
+  ---
+  duration_ms: 0.397499
+  type: 'test'
+  ...
+# Subtest: Ruble input: 5500
+ok 43 - Ruble input: 5500
+  ---
+  duration_ms: 0.248795
+  type: 'test'
+  ...
+# Subtest: Ruble input: 5 500,50
+ok 44 - Ruble input: 5 500,50
+  ---
+  duration_ms: 0.275716
+  type: 'test'
+  ...
+# Subtest: Ruble input: 0.01
+ok 45 - Ruble input: 0.01
+  ---
+  duration_ms: 0.141223
+  type: 'test'
+  ...
+# Subtest: Ruble input: 0
+ok 46 - Ruble input: 0
+  ---
+  duration_ms: 0.334584
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: ""
+ok 47 - Reject invalid money: ""
+  ---
+  duration_ms: 0.735028
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "-1"
+ok 48 - Reject invalid money: "-1"
+  ---
+  duration_ms: 0.238509
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "NaN"
+ok 49 - Reject invalid money: "NaN"
+  ---
+  duration_ms: 0.116695
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "1.234"
+ok 50 - Reject invalid money: "1.234"
+  ---
+  duration_ms: 0.101413
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "1e3"
+ok 51 - Reject invalid money: "1e3"
+  ---
+  duration_ms: 0.085078
+  type: 'test'
+  ...
+# Subtest: Reject invalid money: "90071992547409999"
+ok 52 - Reject invalid money: "90071992547409999"
+  ---
+  duration_ms: 0.116866
+  type: 'test'
+  ...
+# Subtest: Ruble edit formatting round-trips cents
+ok 53 - Ruble edit formatting round-trips cents
+  ---
+  duration_ms: 0.168654
+  type: 'test'
+  ...
+# Subtest: Unknown purchase price stays blank in edit form
+ok 54 - Unknown purchase price stays blank in edit form
+  ---
+  duration_ms: 0.095934
+  type: 'test'
+  ...
+# Subtest: Event time uses venue timezone, not the device
+ok 55 - Event time uses venue timezone, not the device
+  ---
+  duration_ms: 5.675228
+  type: 'test'
+  ...
+# Subtest: TBA and bad timezone have safe display
+ok 56 - TBA and bad timezone have safe display
+  ---
+  duration_ms: 0.242575
+  type: 'test'
+  ...
+# Subtest: Hold starts from the server expiry, not a local ten-minute timer
+ok 57 - Hold starts from the server expiry, not a local ten-minute timer
+  ---
+  duration_ms: 0.178449
+  type: 'test'
+  ...
+# Subtest: Hold reload uses newly fetched server_now
+ok 58 - Hold reload uses newly fetched server_now
+  ---
+  duration_ms: 0.142144
+  type: 'test'
+  ...
+# Subtest: Changing Date.now does not extend hold countdown
+ok 59 - Changing Date.now does not extend hold countdown
+  ---
+  duration_ms: 2.23846
+  type: 'test'
+  ...
+# Subtest: Expired or malformed holds never gain time
+ok 60 - Expired or malformed holds never gain time
+  ---
+  duration_ms: 0.087742
+  type: 'test'
+  ...
+# Subtest: Countdown labels use mm:ss
+ok 61 - Countdown labels use mm:ss
+  ---
+  duration_ms: 0.07943
+  type: 'test'
+  ...
+# Subtest: Date input round-trip retains an explicit ISO timestamp
+ok 62 - Date input round-trip retains an explicit ISO timestamp
+  ---
+  duration_ms: 0.275275
+  type: 'test'
+  ...
+# Subtest: NEW order offers start but not confirm
+ok 63 - NEW order offers start but not confirm
+  ---
+  duration_ms: 0.937442
+  type: 'test'
+  ...
+# Subtest: IN_PROGRESS order offers confirmation, not start
+ok 64 - IN_PROGRESS order offers confirmation, not start
+  ---
+  duration_ms: 0.158659
+  type: 'test'
+  ...
+# Subtest: Received money prevents simple rejection
+ok 65 - Received money prevents simple rejection
+  ---
+  duration_ms: 0.10584
+  type: 'test'
+  ...
+# Subtest: Delivery history prevents rejection even after voiding
+ok 66 - Delivery history prevents rejection even after voiding
+  ---
+  duration_ms: 0.097326
+  type: 'test'
+  ...
+# Subtest: Unpaid confirmed order cannot record delivery
+ok 67 - Unpaid confirmed order cannot record delivery
+  ---
+  duration_ms: 0.980878
+  type: 'test'
+  ...
+# Subtest: Fully paid confirmed order can record delivery
+ok 68 - Fully paid confirmed order can record delivery
+  ---
+  duration_ms: 0.128313
+  type: 'test'
+  ...
+# Subtest: Partial delivery is explicitly 2 of 4, not sent
+ok 69 - Partial delivery is explicitly 2 of 4, not sent
+  ---
+  duration_ms: 0.189255
+  type: 'test'
+  ...
+# Subtest: Incomplete delivery prevents order completion
+ok 70 - Incomplete delivery prevents order completion
+  ---
+  duration_ms: 0.138589
+  type: 'test'
+  ...
+# Subtest: Open case prevents completion even when fully paid and sent
+ok 71 - Open case prevents completion even when fully paid and sent
+  ---
+  duration_ms: 0.27916
+  type: 'test'
+  ...
+# Subtest: Fully fulfilled order permits complete action
+ok 72 - Fully fulfilled order permits complete action
+  ---
+  duration_ms: 0.308685
+  type: 'test'
+  ...
+# Subtest: Empty active order cannot complete
+ok 73 - Empty active order cannot complete
+  ---
+  duration_ms: 0.145569
+  type: 'test'
+  ...
+# Subtest: Closed orders do not show processing or cancellation
+ok 74 - Closed orders do not show processing or cancellation
+  ---
+  duration_ms: 0.09295
+  type: 'test'
+  ...
+# Subtest: Safe return preserves locale, object and query
+ok 75 - Safe return preserves locale, object and query
+  ---
+  duration_ms: 2.750401
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: https://evil.example
+ok 76 - Unsafe return rejected: https://evil.example
+  ---
+  duration_ms: 0.176726
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: //evil.example
+ok 77 - Unsafe return rejected: //evil.example
+  ---
+  duration_ms: 0.233832
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /ru/../../ops/
+ok 78 - Unsafe return rejected: /ru/../../ops/
+  ---
+  duration_ms: 0.133781
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /ru/%5cevil
+ok 79 - Unsafe return rejected: /ru/%5cevil
+  ---
+  duration_ms: 0.33865
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /ru/%0d%0aX
+ok 80 - Unsafe return rejected: /ru/%0d%0aX
+  ---
+  duration_ms: 0.184107
+  type: 'test'
+  ...
+# Subtest: Unsafe return rejected: /bad/account
+ok 81 - Unsafe return rejected: /bad/account
+  ---
+  duration_ms: 0.119039
+  type: 'test'
+  ...
+# Subtest: Media URLs are forced through the same-origin media path
+ok 82 - Media URLs are forced through the same-origin media path
+  ---
+  duration_ms: 0.224348
+  type: 'test'
+  ...
+# Subtest: Content translation fallback uses supplied RU content only
+ok 83 - Content translation fallback uses supplied RU content only
+  ---
+  duration_ms: 0.222355
+  type: 'test'
+  ...
+# Subtest: Selection survives reload without storing contacts
+ok 84 - Selection survives reload without storing contacts
+  ---
+  duration_ms: 1.130703
+  type: 'test'
+  ...
+# Subtest: Wrong ids and excessive quantities are not trusted
+ok 85 - Wrong ids and excessive quantities are not trusted
+  ---
+  duration_ms: 0.138528
+  type: 'test'
+  ...
+# Subtest: Duplicate seats are not a valid draft
+ok 86 - Duplicate seats are not a valid draft
+  ---
+  duration_ms: 0.133211
+  type: 'test'
+  ...
+# Subtest: Malformed stored JSON does not crash checkout
+ok 87 - Malformed stored JSON does not crash checkout
+  ---
+  duration_ms: 0.132329
+  type: 'test'
+  ...
+# Subtest: Catalog never invents unsupported backend filters
+ok 88 - Catalog never invents unsupported backend filters
+  ---
+  duration_ms: 1.100607
+  type: 'test'
+  ...
+# Subtest: Catalog query preserves dates and paging on reload
+ok 89 - Catalog query preserves dates and paging on reload
+  ---
+  duration_ms: 0.44538
+  type: 'test'
+  ...
+# Subtest: Consent sends precisely the checked document versions
+ok 90 - Consent sends precisely the checked document versions
+  ---
+  duration_ms: 0.200281
+  type: 'test'
+  ...
+# Subtest: Consent cannot silently accept a newly published version
+ok 91 - Consent cannot silently accept a newly published version
+  ---
+  duration_ms: 0.32487
+  type: 'test'
+  ...
+# Subtest: Unchecked legal document blocks submission
+ok 92 - Unchecked legal document blocks submission
+  ---
+  duration_ms: 0.110076
+  type: 'test'
+  ...
+# Subtest: No invented consents when backend has none configured
+ok 93 - No invented consents when backend has none configured
+  ---
+  duration_ms: 0.076906
+  type: 'test'
+  ...
+1..93
+# tests 93
+# suites 0
+# pass 93
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 256.991445

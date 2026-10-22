@@ -1,0 +1,51 @@
+{
+  "name": "tickethub-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.16.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "generate:api": "node scripts/generate-api.mjs",
+    "check:translations": "node scripts/check-translations.mjs",
+    "test": "node scripts/test-unit.mjs",
+    "test:components": "vitest run",
+    "test:e2e": "playwright test",
+    "verify": "npm run generate:api && npm run check:translations && npm run typecheck && npm run lint && npm test && npm run test:components && npm run build",
+    "check:source": "node scripts/check-source.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "next-intl": "^4.0.0",
+    "@tanstack/react-query": "^5.90.0",
+    "react-hook-form": "^7.62.0",
+    "zod": "^4.1.0",
+    "@hookform/resolvers": "^5.2.0",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "postcss": "^8.5.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.3.8",
+    "vitest": "^3.2.0",
+    "jsdom": "^26.1.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.0",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@playwright/test": "^1.55.0"
+  }
+}

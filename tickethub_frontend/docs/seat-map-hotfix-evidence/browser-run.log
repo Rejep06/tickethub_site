@@ -1,0 +1,23 @@
+PASS Original map freeze reproduced after effect cleanup/setup replay
+PASS Original INVALID_SEAT_LABEL reproduced on an empty imported row
+PASS Fixed map fits on mount and respects a cached image aspect ratio
+PASS Inactive map does not take the page mouse wheel
+PASS Plus/minus update both image transform and actual Canvas pixels
+PASS Real mouse drag moves the map and does not select seats
+PASS Real wheel zoom is anchored at the cursor
+PASS Double click zooms the live component
+PASS Keyboard pan and Escape release work
+PASS Fit/reset restores the whole arena
+PASS Selecting a sector changes the camera
+PASS Clicking a zoomed seat opens its correct details and selection works
+PASS Unavailable seat cannot be added through the inspector
+PASS Stock rerender preserves the camera and API geometry
+PASS Unmount/remount leaves camera scheduling operational
+PASS Resize does not freeze subsequent camera updates
+PASS Two real touch contacts pinch-zoom the mobile map
+PASS One-finger drag moves an activated mobile map
+PASS Cancelled touch does not inspect a random seat or lock controls
+PASS Editor renders all imported seats with diagnostics, without autosaving
+PASS One invalid seat can be corrected while another is still incomplete
+PASS Save submits only the corrected seat and expected_version; no mass renumbering
+{"passed": 22, "failed": 0}

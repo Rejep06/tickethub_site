@@ -1,0 +1,13 @@
+# Deployment secrets, backups and local caches; never commit these.
+.env.production
+backups-live/
+**/.env
+**/.env.local
+**/node_modules/
+**/.next/
+**/.test-build/
+**/__pycache__/
+**/*.pyc
+**/*.tsbuildinfo
+**/backend/media/
+**/backend/staticfiles/

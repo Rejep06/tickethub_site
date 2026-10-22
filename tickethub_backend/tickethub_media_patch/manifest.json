@@ -1,0 +1,364 @@
+{
+  "id": "media-layout-v3-merged-user-files-2026-10-08",
+  "files": [
+    {
+      "path": "backend/core/adminbase.py",
+      "sha256": "51a1cb225dd00cbd012ec06cf9edcf689cab944de61948dd1e474f6875713b68",
+      "mode": "file",
+      "accepted": [
+        "3ebb99ef8e4352510ff66361576cb10a7b1b99a843ee82a445aea756b5867a85"
+      ]
+    },
+    {
+      "path": "backend/core/image_processing.py",
+      "sha256": "40dae2ce0b4a8521d5802deb807efaa3e48b9081d12d4de8ffad7e9571f02053",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/core/image_urls.py",
+      "sha256": "22104bb3811cbdc7b026bc5990dad5bb59013c920a4f78cc96b8de08eb29cea0",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/core/middleware.py",
+      "sha256": "69cd910120d29613de97514c6e75c5b45b3b16f4670d1acc28928a721da0972d",
+      "mode": "file",
+      "accepted": [
+        "de27e3b398b0f213a6fe33f09af08c0618fa3e0e55e35c1e91b1203e5fd0aaaf"
+      ]
+    },
+    {
+      "path": "backend/core/serializers.py",
+      "sha256": "05c7555e61631fd407ea69a549b7b534cf3c7bd41009fc6c4da4fb612c9a45c0",
+      "mode": "file",
+      "accepted": [
+        "b520228303f340e851f61006ca36b9220f4b65ee21f34b3f5fdc73c5596d7fb5"
+      ]
+    },
+    {
+      "path": "backend/core/tests/test_media_inputs.py",
+      "sha256": "7b84325ae2165e0077b1d6656e0748e1d7f754f506dcd05bfdba89ccda91798e",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/core/validation.py",
+      "sha256": "be3b8617fb108e1bef18a1a58c21e82c4f096e073397236158ae5d22744f392a",
+      "mode": "file",
+      "accepted": [
+        "90776a2e43317196be544fcf1a02e11f61ee955dc5814cf1b793a81ce3ec2a3f"
+      ]
+    },
+    {
+      "path": "backend/events/admin.py",
+      "sha256": "77aec9d45bb9e8229001c9db6bf9ef2699e62a63e76e5f7cca4d741b8e0f68c1",
+      "mode": "file",
+      "accepted": [
+        "982edba81f07b6fde066a4d30ab0c49d772c8bd8e9fc491c86b6b393829c7265"
+      ]
+    },
+    {
+      "path": "backend/events/views.py",
+      "sha256": "151e13f82a17a0f97dff72dbb2a5312258c1361419c02902acc5bcd14dcd91b6",
+      "mode": "file",
+      "accepted": [
+        "cc0e87acc875c6dee962706fb9e10275cf9a95d950dbf696d6185d0b81470598"
+      ]
+    },
+    {
+      "path": "backend/external_events/services.py",
+      "sha256": "f77d0587cc109d6fefb734582d8277178154afdf728bb03bee3e6aa2d5031c20",
+      "mode": "file",
+      "accepted": [
+        "8d6b50b09a7e59ddb2959beea6461746c683d4b10b0c85115d5d8d185b0f3535"
+      ]
+    },
+    {
+      "path": "backend/external_events/tests/fixtures/full_coordinates.json",
+      "sha256": "4c93c7228f4b4b83f318b26e29a6be5ab757da91f8a7171ceb16779543fd427d",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/external_events/tests/test_all_geometry.py",
+      "sha256": "e83f321dd64da186d13aee8b7ef116292ea53941d48785615aef8b8ffe3555d1",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/external_events/tests/test_services.py",
+      "sha256": "d1910b667c7e3dbfd50c7ba204292061e698fe0a54f288b5f431c9dbc7d1bd77",
+      "mode": "nodes",
+      "nodes": [
+        {
+          "name": "VerifiedInventoryDatabaseTests.test_verified_payload_creates_plan_seats_and_external_inventory_not_ticketunit",
+          "accepted": [
+            "7b5685cef677587de04381150db5f23619cfa0da58f0db75a85075da3e07b6be"
+          ],
+          "allow_test_edit": true
+        },
+        {
+          "name": "VerifiedInventoryDatabaseTests.test_provider_sync_preserves_local_enabled_for_sale",
+          "accepted": [
+            "8233e210cf3343806ff9850c87ada094b09029cb315accf349a955fc7fd421c0"
+          ],
+          "allow_test_edit": true
+        }
+      ]
+    },
+    {
+      "path": "backend/tickets/models.py",
+      "sha256": "e6d1192aea22fbbd842cbe30f25f91517dd0dab5c5887af0314b26329562bb51",
+      "mode": "file",
+      "accepted": [
+        "1bdc1094154d418d50fce0f3cfa8777fe179d9d83eed555c945761765a2cb5bf"
+      ]
+    },
+    {
+      "path": "backend/tickets/services.py",
+      "sha256": "301943163ef979d490c730851705f58e30497a0a3f759467b0933792e62b4d3f",
+      "mode": "file",
+      "accepted": [
+        "cdd0dccc772c02433811d1824e84834f958e79c481644d78be05f27a1374f9a8"
+      ]
+    },
+    {
+      "path": "backend/venues/admin.py",
+      "sha256": "fc27c9b912b974c3518c4a59740b08ff0eb30795fab418e5bbe99c1b475e7c4c",
+      "mode": "file",
+      "accepted": [
+        "cc9dee93d5224ba22cd5ffe65d4c502965ba2e0d8c85346d223198b8ae7acc35"
+      ]
+    },
+    {
+      "path": "backend/venues/editor_services.py",
+      "sha256": "e0b7bb758bb2680dbf55c73f39116f942b0996437348363f7be37da26dda7a24",
+      "mode": "file",
+      "accepted": [
+        "8f4e3b4f71080968cd1de50a7030a8a3e9dce727a9f982ca89c679ec2dc64c3d"
+      ]
+    },
+    {
+      "path": "backend/venues/import_geometry.py",
+      "sha256": "7d19beb02ce798f8c1677fe8b6565e7abf9d1ab3d022d12c14fa64819d1f9f0e",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/venues/management/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/venues/management/commands/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/venues/management/commands/backfill_layout_seats.py",
+      "sha256": "178bff0d90aed0a81b89ae547bdf1632f83830ec38906eaac6c40f7800e27f67",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/venues/migrations/0005_all_geometry_seats.py",
+      "sha256": "77700fb2c8328dc04acf6c6c7fb0dd43dd96bfbbd4eca0d906cb63f72886244c",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "backend/venues/models.py",
+      "sha256": "8b1492a12d54e9e74858b54d9257e6d5208b7d0dc30510820417ec390d40d9f2",
+      "mode": "file",
+      "accepted": [
+        "eb129fe2c11ea912adcda246704a9f1bd02c52fca2ce1b19f99b7e76ed754ab8"
+      ]
+    },
+    {
+      "path": "backend/venues/serializers.py",
+      "sha256": "280d675c6b955d782e547e0e0d4169e7ffa740c14c39924ac58d73850f24e841",
+      "mode": "file",
+      "accepted": [
+        "f10b82313f8eb31e26ba3b14934d0c18395e401ae2d8c24aea44147a4d73298e"
+      ]
+    },
+    {
+      "path": "backend/venues/services.py",
+      "sha256": "9af6789555e30ac70e5672c00694c08a6fad4dd09ab4c74938f19539f022868a",
+      "mode": "file",
+      "accepted": [
+        "38402159a71154badd40e1be1c82e344d1cb8f7c6fb5693624b1a329ca622e2f"
+      ]
+    },
+    {
+      "path": "backend/venues/static/venues/editor.js",
+      "sha256": "2644c760256ca761fe53a6b86be535cd9522d6cd4d981e5926404296f5a43107",
+      "mode": "file",
+      "accepted": [
+        "085081534eada7b658e4e56bf693484aa6ee9a0ae1fcc4d8ca795fe24330b034"
+      ]
+    },
+    {
+      "path": "backend/venues/templates/admin/venues/editor.html",
+      "sha256": "a361f9873258f4c31f57903353af2864b5879436f15a110d7bf2114685b89286",
+      "mode": "file",
+      "accepted": [
+        "6ae347bbbcf77a3fee6f98123fb01b2cd4d506eb53164e484868bd091318b1bf"
+      ]
+    },
+    {
+      "path": "backend/venues/views.py",
+      "sha256": "494391235646678d700100637b0fc58b2eb59857fbde2b5cece4ee8c69e554e6",
+      "mode": "file",
+      "accepted": [
+        "1a87b494d655d52fda6d8d791e2e5a6ca9fb3a1fe5b437ef81299731be9bfe3f"
+      ]
+    },
+    {
+      "path": "checks/media_layout/test_images.py",
+      "sha256": "9e29af6bcdc25039d24829c506d2142d4d066a2211f2b470b9ce1fc1b86f13b3",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "checks/media_layout/ui_all_points.py",
+      "sha256": "d962d22c5b2913caac46d4e9f93be910084d0286cf1267b5e4e2f2e8657d75c7",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "compose.prod.yaml",
+      "sha256": "5be038ca75d69274b2023441ef9cfaaf527d516246b9ebb1858406476de880d1",
+      "mode": "replacements",
+      "replacements": [
+        {
+          "old": "/tmp:rw,noexec,nosuid,size=64m",
+          "new": "/tmp:rw,noexec,nosuid,size=512m"
+        }
+      ]
+    },
+    {
+      "path": "docs/media-and-complete-layout.md",
+      "sha256": "85176c81a00d0ee456007794a526dc2c7b78a9f30a83b3f936743bd068ce7d0f",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/all-points-browser.json",
+      "sha256": "8662f5aad33868855f94116a7a8a2817cf794f17998e9361018286743923c096",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/all-points-smoke.png",
+      "sha256": "6d583dd9bb9fbb6f9ef9381c3772434128ad3932eff12036aaf902b924def063",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/capture-analysis.json",
+      "sha256": "cd347d1969cd05932ed3d50ff33873f755d77dffb0201161a6b635ecff48132e",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/django-check.log",
+      "sha256": "2929d43e89dd87c2f5a75058ed1cd1ff5d4ca3ee7fa12fb1aedc312eb62c2a89",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/installer-checks.json",
+      "sha256": "88543406aff89334187ade1bc6fce35d26fac51961fd742802475f1fa02db3fc",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/large-raster.json",
+      "sha256": "9686a4b6b773d6f18b3bf2db92c7ad6cc4a4775ed77fc4df9146997bfb9beaf4",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/media-unit.log",
+      "sha256": "b66a12177b344ee04becc417d3869406a0d2d36de481d556367a1c9d7ef6ad7a",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/ui-all-points.log",
+      "sha256": "1987943311a47e20d24d5e4968c1f7316334292d295ed3161b1916961a2cf694",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "docs/verification/media-layout/ui-smoke.log",
+      "sha256": "7ac2bbead7135bf82ecab005c7efeeab78e877cd992fe8285481fff19b4341f2",
+      "mode": "file",
+      "accepted": [
+        null
+      ]
+    },
+    {
+      "path": "infra/nginx/default.conf.template",
+      "sha256": "1bb6870d028f8132397c0e876cb9bc46b949130debe3b0616caca56ee594736b",
+      "mode": "replacements",
+      "replacements": [
+        {
+          "old": "client_max_body_size 11m;",
+          "new": "client_max_body_size 101m;"
+        },
+        {
+          "old": "    location /media/ { alias /srv/media/; autoindex off; }\n",
+          "new": "    location /media/ {\n        alias /srv/media/;\n        autoindex off;\n        add_header X-Content-Type-Options nosniff always;\n        add_header Referrer-Policy no-referrer always;\n        add_header Content-Security-Policy \"default-src 'none'; style-src 'unsafe-inline'; sandbox\" always;\n    }\n"
+        }
+      ]
+    }
+  ]
+}

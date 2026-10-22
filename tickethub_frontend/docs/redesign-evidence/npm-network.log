@@ -1,0 +1,28 @@
+npm verbose cli /opt/nvm/versions/node/v22.16.0/bin/node /opt/nvm/versions/node/v22.16.0/bin/npm
+npm info using npm@10.9.2
+npm info using node@v22.16.0
+npm verbose title npm ping
+npm verbose argv "ping" "--fetch-retries" "0" "--fetch-timeout" "6000" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:/home/oai/.npm/_logs/2026-10-06T17_11_52_812Z-
+npm verbose logfile /home/oai/.npm/_logs/2026-10-06T17_11_52_812Z-debug-0.log
+npm notice PING https://registry.npmjs.org/
+npm http fetch GET https://registry.npmjs.org/-/ping attempt 1 failed with EAI_AGAIN
+npm verbose type system
+npm verbose stack FetchError: request to https://registry.npmjs.org/-/ping failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org
+npm verbose stack     at ClientRequest.<anonymous> (/opt/nvm/versions/node/v22.16.0/lib/node_modules/npm/node_modules/minipass-fetch/lib/index.js:130:14)
+npm verbose stack     at ClientRequest.emit (node:events:518:28)
+npm verbose stack     at emitErrorEvent (node:_http_client:104:11)
+npm verbose stack     at _destroy (node:_http_client:898:9)
+npm verbose stack     at onSocketNT (node:_http_client:918:5)
+npm verbose stack     at process.processTicksAndRejections (node:internal/process/task_queues:91:21)
+npm error code EAI_AGAIN
+npm error syscall getaddrinfo
+npm error errno EAI_AGAIN
+npm error request to https://registry.npmjs.org/-/ping failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org
+npm verbose cwd /mnt/data/tickethub_redesign/tickethub_frontend
+npm verbose os Linux 6.18.44
+npm verbose node v22.16.0
+npm verbose npm  v10.9.2
+npm verbose exit 1
+npm verbose code 1
+npm error A complete log of this run can be found in: /home/oai/.npm/_logs/2026-10-06T17_11_52_812Z-debug-0.log

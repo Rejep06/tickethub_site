@@ -1,0 +1,157 @@
+name: tickethub-live
+
+x-logging: &logging
+  driver: json-file
+  options: {max-size: "10m", max-file: "3"}
+
+x-backend: &backend
+  image: tickethub-backend:${RELEASE_TAG:-local}
+  build:
+    context: ./tickethub_backend
+    dockerfile: infra/docker/Dockerfile
+    args:
+      PYTHON_IMAGE: ${PYTHON_IMAGE:-python:3.13-slim-bookworm}
+      REQUIREMENTS_FILE: ${REQUIREMENTS_FILE:-requirements.lock}
+  environment: &backend-env
+    DJANGO_SETTINGS_MODULE: config.settings.production
+    DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Generate .env.production first}
+    DJANGO_ALLOWED_HOSTS: ${PUBLIC_HOST:?Set the public domain}
+    DJANGO_CSRF_TRUSTED_ORIGINS: https://${PUBLIC_HOST}
+    POSTGRES_DB: ${POSTGRES_DB:-tickethub}
+    POSTGRES_USER: ${POSTGRES_USER:-tickethub_app}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set the application DB password}
+    POSTGRES_HOST: db
+    POSTGRES_PORT: "5432"
+    EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
+    EMAIL_HOST: ${EMAIL_HOST:-}
+    EMAIL_PORT: ${EMAIL_PORT:-587}
+    EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
+    EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
+    EMAIL_USE_TLS: ${EMAIL_USE_TLS:-true}
+    EMAIL_USE_SSL: ${EMAIL_USE_SSL:-false}
+    DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-}
+    EMAIL_MESSAGE_DOMAIN: ${PUBLIC_HOST}
+    SITE_URL: https://${PUBLIC_HOST}
+    CONTACT_EMAIL: ${CONTACT_EMAIL:-}
+    CONTACT_PHONE: ${CONTACT_PHONE:-}
+    CONTACT_HOURS: ${CONTACT_HOURS:-}
+    STAFF_NOTIFICATION_EMAILS: ${STAFF_NOTIFICATION_EMAILS:-}
+    PUBLIC_FORMS_ENABLED: ${PUBLIC_FORMS_ENABLED:-false}
+    ORDER_INTAKE_ENABLED: ${ORDER_INTAKE_ENABLED:-false}
+    CLIENT_ANALYTICS_ENABLED: ${CLIENT_ANALYTICS_ENABLED:-false}
+  volumes:
+    - static_data:/app/staticfiles
+    - media_data:/app/media
+    - ./deploy/scripts:/opt/tickethub-ops:ro
+  read_only: true
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,size=512m
+  security_opt: [no-new-privileges:true]
+  logging: *logging
+  restart: unless-stopped
+
+services:
+  db:
+    image: ${POSTGRES_IMAGE:-postgres:17-bookworm}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tickethub}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Set a separate DB bootstrap password}
+      POSTGRES_APP_USER: ${POSTGRES_USER:-tickethub_app}
+      POSTGRES_APP_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./tickethub_backend/infra/postgres/init-app.sh:/docker-entrypoint-initdb.d/10-app.sh:ro
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 4s
+      retries: 20
+    restart: unless-stopped
+    logging: *logging
+
+  backend:
+    <<: *backend
+    command: [gunicorn, config.wsgi:application, --bind, '0.0.0.0:8000', --workers, '${WEB_WORKERS:-2}', --timeout, '180', --access-logfile, '-', --access-logformat, '%(m)s %(U)s %(s)s %(L)s', --error-logfile, '-']
+    depends_on: {db: {condition: service_healthy}}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready/',timeout=5)"]
+      interval: 20s
+      timeout: 7s
+      start_period: 40s
+      retries: 3
+
+  frontend:
+    image: tickethub-frontend:${RELEASE_TAG:-local}
+    build:
+      context: ./tickethub_frontend
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        NEXT_PUBLIC_APP_URL: https://${PUBLIC_HOST}
+        BACKEND_ORIGIN: http://backend:8000
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_APP_URL: https://${PUBLIC_HOST}
+      BACKEND_ORIGIN: http://backend:8000
+      API_INTERNAL_URL: http://backend:8000/api/v1/
+      API_INTERNAL_HOST: ${PUBLIC_HOST}
+      HOSTNAME: 0.0.0.0
+      PORT: "3000"
+    depends_on: {backend: {condition: service_healthy}}
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/favicon.ico').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 25s
+      timeout: 8s
+      start_period: 40s
+      retries: 3
+    security_opt: [no-new-privileges:true]
+    logging: *logging
+    restart: unless-stopped
+
+  scheduler:
+    <<: *backend
+    command: [python, /opt/tickethub-ops/scheduler.py]
+    depends_on: {backend: {condition: service_healthy}}
+
+  nginx:
+    image: ${NGINX_IMAGE:-nginx:stable-alpine}
+    environment:
+      PUBLIC_HOST: ${PUBLIC_HOST}
+      NGINX_ENVSUBST_FILTER: ^PUBLIC_HOST$$
+    ports: ['80:80', '443:443']
+    volumes:
+      - ./deploy/nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - acme_web:/var/www/acme:ro
+      - certificates:/etc/letsencrypt:ro
+      - static_data:/srv/static:ro
+      - media_data:/srv/media:ro
+    depends_on: {frontend: {condition: service_healthy}, backend: {condition: service_healthy}}
+    logging: *logging
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+
+  # Start ONLY for first certificate issuance; never alongside nginx (same port 80).
+  nginx-bootstrap:
+    profiles: [bootstrap]
+    image: ${NGINX_IMAGE:-nginx:stable-alpine}
+    ports: ['80:80']
+    volumes:
+      - ./deploy/nginx-bootstrap.conf:/etc/nginx/conf.d/default.conf:ro
+      - acme_web:/var/www/acme:ro
+    logging: *logging
+
+  certbot:
+    profiles: [tools]
+    image: ${CERTBOT_IMAGE:-certbot/certbot:latest}
+    volumes:
+      - certificates:/etc/letsencrypt
+      - acme_web:/var/www/acme
+    logging: *logging
+
+volumes:
+  postgres_data:
+  media_data:
+  static_data:
+  certificates:
+  acme_web:

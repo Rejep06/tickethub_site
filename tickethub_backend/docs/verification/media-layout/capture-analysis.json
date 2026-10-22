@@ -1,0 +1,9 @@
+{
+  "captured_geometry_points": 12075,
+  "available_labelled_tickets": 2109,
+  "geometry_points_without_labels_in_capture": 9966,
+  "width": 5314,
+  "height": 4180,
+  "all_tickets_matched_geometry": true,
+  "scope": "Executed parser against provided files, not a live API/DB run."
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "install",
+    "command": "npm install --ignore-scripts --package-lock=false --fetch-retries=0 --fetch-timeout=5000 --loglevel=error",
+    "exit_code": "TIMEOUT",
+    "log": "install.log"
+  },
+  {
+    "name": "build",
+    "command": "npm run build",
+    "exit_code": 127,
+    "log": "build.log"
+  },
+  {
+    "name": "typecheck",
+    "command": "npm run typecheck",
+    "exit_code": 2,
+    "log": "typecheck.log"
+  },
+  {
+    "name": "lint",
+    "command": "npm run lint",
+    "exit_code": 127,
+    "log": "lint.log"
+  },
+  {
+    "name": "components",
+    "command": "npm run test:components -- tests/components/seat-map-regression.test.tsx tests/components/seat-editor-regression.test.tsx",
+    "exit_code": 127,
+    "log": "components.log"
+  }
+]

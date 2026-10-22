@@ -1,0 +1,5 @@
+
+> tickethub-frontend@1.0.0 test:components
+> vitest run
+
+sh: 1: vitest: not found

@@ -1,0 +1,20 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const {lib,MemoryStore}=require('./helpers.cjs');
+const {homeCatalogPath,catalogPath}=lib('catalog');
+const privacy=lib('analytics-preference');
+function query(path){return new URL('https://test.invalid/'+path).searchParams;}
+test('homepage has no hidden date or stock filter',()=>{const q=query(homeCatalogPath()); for(const name of ['date_from','date_to','status','orderable','kind']) assert.equal(q.has(name),false);});
+test('homepage uses same catalog route as full catalog',()=>assert.equal(homeCatalogPath().split('?')[0],catalogPath(new URLSearchParams()).split('?')[0]));
+test('homepage is bounded to six server results',()=>assert.equal(query(homeCatalogPath()).get('page_size'),'6'));
+test('homepage and catalog have the same stable ordering',()=>assert.equal(query(homeCatalogPath()).get('ordering'),query(catalogPath(new URLSearchParams())).get('ordering')));
+for(const kind of ['SPORT','CONCERT','OTHER']) test('homepage kind is filtered at API: '+kind,()=>assert.equal(query(homeCatalogPath(kind)).get('kind'),kind));
+test('kind survives navigation to complete catalog',()=>assert.equal(query(catalogPath(new URLSearchParams('kind=SPORT&category=abc'))).get('kind'),'SPORT'));
+test('unknown catalog filters are not forwarded',()=>assert.equal(query(catalogPath(new URLSearchParams('is_admin=true&price=0'))).size,1));
+test('analytics is off without an explicit positive choice',()=>assert.equal(privacy.hasAnalyticsConsent(new MemoryStore()),false));
+test('analytics opts in only on saved positive choice',()=>{const s=new MemoryStore(); assert.equal(privacy.setAnalyticsConsent(s,true),true); assert.equal(privacy.hasAnalyticsConsent(s),true);});
+test('analytics can be revoked',()=>{const s=new MemoryStore(); privacy.setAnalyticsConsent(s,true); privacy.setAnalyticsConsent(s,false); assert.equal(privacy.hasAnalyticsConsent(s),false);});
+test('analytics read error is fail closed',()=>{privacy.setAnalyticsConsent(new MemoryStore(),true); assert.equal(privacy.hasAnalyticsConsent({getItem(){throw Error('denied');}}),false);});
+test('analytics write error does not falsely enable tracking',()=>{assert.equal(privacy.setAnalyticsConsent({setItem(){throw Error('quota');}},true),false); assert.equal(privacy.hasAnalyticsConsent({getItem(){return 'yes';}}),false);});
+test('failed revocation write still stops this tab',()=>{const s=new MemoryStore(); privacy.setAnalyticsConsent(s,true); assert.equal(privacy.setAnalyticsConsent({setItem(){throw Error('quota');}},false),false); assert.equal(privacy.hasAnalyticsConsent(s),false);});
+test('valid saved choice can be enabled again after failure',()=>{const s=new MemoryStore(); assert.equal(privacy.setAnalyticsConsent(s,true),true); assert.equal(privacy.hasAnalyticsConsent(s),true); privacy.setAnalyticsConsent(s,false);});

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./foundation.css";
+@import "./experience.css";
+@import "./staff-editor.css";
+@import "./usability-update.css";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@theme inline {
+  --color-brand: var(--yellow);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-ui);
+}

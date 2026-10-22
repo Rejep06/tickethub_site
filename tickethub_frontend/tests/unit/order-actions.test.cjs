@@ -1,0 +1,14 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const {lib}=require('./helpers.cjs');const {orderActions,deliveryProgress}=lib('order-actions');
+const order=(changes={})=>({order_state:'NEW',delivery_state:'NOT_SENT',payment:{received_minor:0,net_received_minor:0},total_minor:40000,items:[1,2,3,4].map(i=>({id:String(i),is_active:true,sale_price_minor:10000})),cases:[],deliveries:[],...changes});
+test('NEW order offers start but not confirm',()=>{const a=orderActions(order());assert.ok(a.includes('start'));assert.ok(!a.includes('confirm'));});
+test('IN_PROGRESS order offers confirmation, not start',()=>{const a=orderActions(order({order_state:'IN_PROGRESS'}));assert.ok(a.includes('confirm'));assert.ok(!a.includes('start'));});
+test('Received money prevents simple rejection',()=>assert.ok(!orderActions(order({payment:{received_minor:1}})).includes('reject')));
+test('Delivery history prevents rejection even after voiding',()=>assert.ok(!orderActions(order({deliveries:[{voided_at:'now'}]})).includes('reject')));
+test('Unpaid confirmed order cannot record delivery',()=>assert.ok(!orderActions(order({order_state:'CONFIRMED'})).includes('delivery')));
+test('Fully paid confirmed order can record delivery',()=>assert.ok(orderActions(order({order_state:'CONFIRMED',payment:{received_minor:40000,net_received_minor:40000}})).includes('delivery')));
+test('Partial delivery is explicitly 2 of 4, not sent',()=>{assert.equal(deliveryProgress(2,4),'Отправлено 2 из 4 билетов');assert.equal(deliveryProgress(2,4,'en'),'2 of 4 tickets sent');});
+test('Incomplete delivery prevents order completion',()=>assert.ok(!orderActions(order({order_state:'CONFIRMED',delivery_state:'PARTIALLY_SENT',payment:{received_minor:40000,net_received_minor:40000}})).includes('complete')));
+test('Open case prevents completion even when fully paid and sent',()=>assert.ok(!orderActions(order({order_state:'CONFIRMED',delivery_state:'SENT',payment:{received_minor:40000,net_received_minor:40000},cases:[{status:'APPROVED'}]})).includes('complete')));
+test('Fully fulfilled order permits complete action',()=>assert.ok(orderActions(order({order_state:'CONFIRMED',delivery_state:'SENT',payment:{received_minor:40000,net_received_minor:40000}})).includes('complete')));
+test('Empty active order cannot complete',()=>assert.ok(!orderActions(order({order_state:'CONFIRMED',delivery_state:'SENT',items:[]})).includes('complete')));
+test('Closed orders do not show processing or cancellation',()=>{const a=orderActions(order({order_state:'CANCELLED'}));assert.ok(!a.includes('start'));assert.ok(!a.includes('cancel'));assert.ok(a.includes('payment'),'Expense ledger remains available, not a customer-payment permission');});

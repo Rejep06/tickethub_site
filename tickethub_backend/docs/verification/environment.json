@@ -1,0 +1,19 @@
+{
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "modules_available": {
+    "django": false,
+    "rest_framework": false,
+    "psycopg": false,
+    "PIL": true,
+    "phonenumbers": false,
+    "drf_spectacular": false,
+    "gunicorn": false
+  },
+  "programs": {
+    "docker": null,
+    "postgres": null,
+    "psql": null,
+    "pg_dump": null,
+    "pg_restore": null
+  }
+}

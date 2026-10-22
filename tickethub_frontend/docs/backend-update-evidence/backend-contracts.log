@@ -1,0 +1,32 @@
+PASS source router /staff/external-events/
+PASS plan router /staff/plans/
+PASS ExternalEventViewSet.preview: POST /preview/ detail=False
+PASS ExternalEventViewSet.import_event: POST /import/ detail=False
+PASS ExternalEventViewSet.sync: POST /sync/ detail=True
+PASS StaffPlanViewSet.preview: GET /preview/ detail=True
+PASS StaffPlanViewSet.block_preview: POST /block-preview/ detail=True
+PASS StaffPlanViewSet.csv_preview: POST /csv-preview/ detail=True
+PASS StaffPlanViewSet.bulk_edit: POST /bulk-edit/ detail=True
+PASS StaffPlanViewSet.image: POST /image/ detail=True
+PASS StaffPlanViewSet.publish: POST /publish/ detail=True
+PASS StaffPlanViewSet.clone_version: POST /clone-version/ detail=True
+PASS StaffEventViewSet.image: POST /image/ detail=True
+PASS import input strict fields
+PASS IMPORT_ONLY is the only import mode
+PASS import requires IsAdmin
+PASS IsAdmin verifies staff role
+PASS staff session requires password backend
+PASS bulk edit fields
+PASS block preview fields
+PASS CSV preview text field
+PASS base image multipart fields
+PASS EventImageSerializer adds expected_version
+PASS PlanImageSerializer adds expected_version
+PASS bulk version checked
+PASS bulk transaction locks plan
+PASS maximum 2000 changes
+PASS maximum 50000 seats
+PASS preview returns plan and seats
+PASS background optional for publication
+
+30 source contract checks; 0 failed. NO live API/Django integration was tested.

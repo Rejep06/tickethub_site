@@ -1,0 +1,22 @@
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+backend/media/
+backend/staticfiles/
+backend/*.sqlite3
+*.log
+backups/
+.DS_Store
+.coverage
+htmlcov/
+
+!.env.production.example
+
+# Public provider captures can still contain third-party metadata; do not commit them.
+backend/portalbilet_capture*/
+backend/portalbilet_capture*.zip

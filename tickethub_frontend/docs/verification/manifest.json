@@ -1,0 +1,95 @@
+{
+  "checked_at_utc": "2026-10-06T00:04:24.199712+00:00",
+  "scope": "Frontend delivery checks; no Django HTTP or actual browser run.",
+  "checks": [
+    {
+      "name": "npm-install",
+      "command": "npm install --fetch-retries=0 --fetch-timeout=6000 --no-audit --no-fund",
+      "exit_code": 124,
+      "seconds": 18.02
+    },
+    {
+      "name": "generate-api",
+      "command": "npm run generate:api",
+      "exit_code": 0,
+      "seconds": 0.14
+    },
+    {
+      "name": "translations",
+      "command": "npm run check:translations",
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "name": "source-audit",
+      "command": "npm run check:source",
+      "exit_code": 0,
+      "seconds": 1.23
+    },
+    {
+      "name": "unit-tests",
+      "command": "npm test",
+      "exit_code": 0,
+      "seconds": 1.26
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "exit_code": 2,
+      "seconds": 1.78
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "exit_code": 127,
+      "seconds": 0.09
+    },
+    {
+      "name": "component-tests",
+      "command": "npm run test:components",
+      "exit_code": 127,
+      "seconds": 0.1
+    },
+    {
+      "name": "e2e",
+      "command": "npm run test:e2e",
+      "exit_code": 1,
+      "seconds": 0.97
+    },
+    {
+      "name": "build",
+      "command": "npm run build",
+      "exit_code": 127,
+      "seconds": 0.09
+    },
+    {
+      "name": "django-check",
+      "command": "python manage.py check",
+      "exit_code": 1,
+      "seconds": 0.62
+    },
+    {
+      "name": "registry-connectivity",
+      "command": "curl -I --connect-timeout 5 --max-time 8 https://registry.npmjs.org/next",
+      "exit_code": 6,
+      "result": "Could not resolve host: registry.npmjs.org"
+    }
+  ],
+  "tests": {
+    "written": 109,
+    "executed": 93,
+    "passed": 93,
+    "failed": 0,
+    "not_executed": 16,
+    "unit": 93,
+    "component": 12,
+    "live_e2e": 4,
+    "note": "Component and live E2E runner startup failed; the test cases did not execute. Unit fetch is mocked."
+  },
+  "status": {
+    "code": "INCOMPLETE",
+    "build": "FAILED (missing Next dependency)",
+    "backend_integration": "BLOCKED",
+    "production_ready": false
+  }
+}

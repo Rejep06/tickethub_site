@@ -1,0 +1,36 @@
+
+> tickethub-frontend@1.0.0 typecheck
+> tsc --noEmit
+
+next.config.ts(1,33): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+next.config.ts(2,34): error TS2307: Cannot find module 'next-intl/plugin' or its corresponding type declarations.
+next.config.ts(3,25): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/app/[locale]/(site)/[information]/page.tsx(1,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/[locale]/(site)/[information]/page.tsx(2,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/[locale]/(site)/[information]/page.tsx(3,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/[locale]/(site)/[information]/page.tsx(31,16): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/[locale]/(site)/[information]/page.tsx(31,16): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/[information]/page.tsx(33,3): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/[locale]/(site)/[information]/page.tsx(33,54): error TS2322: Type '{ children: any[]; key: string; }' is not assignable to type '{ children: ReactNode; className?: string | undefined; id?: string | undefined; }'.
+  Property 'key' does not exist on type '{ children: ReactNode; className?: string | undefined; id?: string | undefined; }'.
+src/app/[locale]/(site)/[information]/page.tsx(34,7): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/[locale]/(site)/[information]/page.tsx(34,41): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/[locale]/(site)/[information]/page.tsx(36,14): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/[locale]/(site)/[information]/page.tsx(39,9): error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/[locale]/(site)/account/layout.tsx(1,32): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/app/[locale]/(site)/account/layout.tsx(7,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/account/orders/[id]/page.tsx(8,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/account/orders/page.tsx(3,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/account/page.tsx(3,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/account/profile/page.tsx(3,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/account/requests/[id]/page.tsx(8,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/account/requests/page.tsx(3,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/auth/page.tsx(1,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/[locale]/(site)/checkout/[order]/page.tsx(1,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/[locale]/(site)/checkout/page.tsx(5,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/events/[slug]/page.tsx(1,23): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/app/[locale]/(site)/events/[slug]/page.tsx(2,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/[locale]/(site)/events/[slug]/page.tsx(3,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/[locale]/(site)/events/[slug]/page.tsx(37,12): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/[locale]/(site)/events/page.tsx(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+[truncated; external framework packages/types are missing]

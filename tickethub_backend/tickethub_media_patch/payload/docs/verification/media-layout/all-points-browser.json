@@ -1,0 +1,11 @@
+{
+  "scope": "Real Chromium canvas, captured coordinates, mocked API, NOT Django/PostgreSQL test",
+  "checks": [
+    "All 12,075 points and 9,966 unknown labels displayed in editor counter",
+    "Exactly 12,075 point circles drawn, no duplicate ghost layer",
+    "Provider geometry excluded from accidental group edits",
+    "No browser JavaScript exceptions"
+  ],
+  "passed": 4,
+  "javascript_errors": []
+}

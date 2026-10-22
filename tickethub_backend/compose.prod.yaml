@@ -1,0 +1,94 @@
+name: tickethub-production
+services:
+  db:
+    image: ${POSTGRES_IMAGE:?Set an approved PostgreSQL 17 image digest}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tickethub}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Set a separate database bootstrap password}
+      POSTGRES_APP_USER: ${POSTGRES_USER:-tickethub_app}
+      POSTGRES_APP_PASSWORD: ${POSTGRES_PASSWORD:?Set the application database password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/postgres/init-app.sh:/docker-entrypoint-initdb.d/10-app.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+  backend:
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile
+      args:
+        PYTHON_IMAGE: ${PYTHON_IMAGE:?Set an approved Python 3.13 image digest}
+        REQUIREMENTS_FILE: ${REQUIREMENTS_FILE:-requirements.lock}
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.production
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set a random secret}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:?Set the public hostname}
+      DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:?Set the HTTPS origin}
+      POSTGRES_DB: ${POSTGRES_DB:-tickethub}
+      POSTGRES_USER: ${POSTGRES_USER:-tickethub_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set the application database password}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
+      EMAIL_HOST: ${EMAIL_HOST:-}
+      EMAIL_PORT: ${EMAIL_PORT:-587}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
+      EMAIL_USE_TLS: ${EMAIL_USE_TLS:-true}
+      EMAIL_USE_SSL: ${EMAIL_USE_SSL:-false}
+      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-}
+      EMAIL_MESSAGE_DOMAIN: ${EMAIL_MESSAGE_DOMAIN:?Set the email Message-ID domain}
+      SITE_URL: ${SITE_URL:?Set the HTTPS site URL}
+      CONTACT_EMAIL: ${CONTACT_EMAIL:-}
+      CONTACT_PHONE: ${CONTACT_PHONE:-}
+      CONTACT_HOURS: ${CONTACT_HOURS:-}
+      STAFF_NOTIFICATION_EMAILS: ${STAFF_NOTIFICATION_EMAILS:-}
+      PUBLIC_FORMS_ENABLED: ${PUBLIC_FORMS_ENABLED:-false}
+      ORDER_INTAKE_ENABLED: ${ORDER_INTAKE_ENABLED:-false}
+      CLIENT_ANALYTICS_ENABLED: ${CLIENT_ANALYTICS_ENABLED:-false}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - static_data:/app/staticfiles
+      - media_data:/app/media
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=512m
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready/', timeout=5)"]
+      interval: 15s
+      timeout: 7s
+      start_period: 30s
+      retries: 3
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+  nginx:
+    image: ${NGINX_IMAGE:?Set an approved Nginx image digest}
+    environment:
+      PUBLIC_HOST: ${PUBLIC_HOST:?Set the public hostname}
+      NGINX_ENVSUBST_FILTER: ^PUBLIC_HOST$$
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infra/nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ${TLS_CERT_DIR:-./infra/certificates}:/etc/nginx/certs:ro
+      - static_data:/srv/static:ro
+      - media_data:/srv/media:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  postgres_data:
+  static_data:
+  media_data:

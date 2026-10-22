@@ -1,0 +1,79 @@
+{
+  "implementation_stage": "2 - foundation code; runtime verification blocked",
+  "django_available": false,
+  "postgresql_available": false,
+  "docker_available": false,
+  "django_test_functions_written": 30,
+  "django_tests_executed": 0,
+  "offline_tests_passed": 12,
+  "offline_tests_failed": 0,
+  "python_files_compiled": 35,
+  "migration": "Manually written 0001_initial.py; not generated/checked/applied with Django.",
+  "commands": [
+    {
+      "command": "install",
+      "exit_code": 2,
+      "log": "docs/verification/install.txt"
+    },
+    {
+      "command": "makemigrations",
+      "exit_code": 1,
+      "log": "docs/verification/makemigrations.txt"
+    },
+    {
+      "command": "migration-consistency",
+      "exit_code": 1,
+      "log": "docs/verification/migration-consistency.txt"
+    },
+    {
+      "command": "migrate",
+      "exit_code": 1,
+      "log": "docs/verification/migrate.txt"
+    },
+    {
+      "command": "django-check",
+      "exit_code": 1,
+      "log": "docs/verification/django-check.txt"
+    },
+    {
+      "command": "django-tests",
+      "exit_code": 1,
+      "log": "docs/verification/django-tests.txt"
+    },
+    {
+      "command": "openapi",
+      "exit_code": 1,
+      "log": "docs/verification/openapi.txt"
+    },
+    {
+      "command": "docker-config",
+      "exit_code": 127,
+      "log": "docs/verification/docker-config.txt"
+    },
+    {
+      "command": "postgres-version",
+      "exit_code": 127,
+      "log": "docs/verification/postgres-version.txt"
+    },
+    {
+      "command": "offline-tests",
+      "exit_code": 0,
+      "log": "docs/verification/offline-tests.txt"
+    },
+    {
+      "command": "python-compile",
+      "exit_code": 0,
+      "log": "docs/verification/python-compile.txt"
+    },
+    {
+      "command": "shell-syntax",
+      "exit_code": 0,
+      "log": "docs/verification/shell-syntax.txt"
+    },
+    {
+      "command": "yaml-syntax",
+      "exit_code": 0,
+      "log": "docs/verification/yaml-syntax.txt"
+    }
+  ]
+}

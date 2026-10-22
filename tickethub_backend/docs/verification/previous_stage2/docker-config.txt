@@ -1,0 +1,4 @@
+$ docker compose config --quiet
+[Errno 2] No such file or directory: 'docker'
+
+EXIT_CODE=127

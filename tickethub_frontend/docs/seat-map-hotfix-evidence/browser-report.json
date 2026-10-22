@@ -1,0 +1,220 @@
+{
+  "environment": {
+    "browser": "Chromium via Playwright",
+    "react": "18.2.0 local production runtime",
+    "effect_test": "explicit cleanup-all/setup-all replay retaining hook state and refs, NOT a Next.js dev server",
+    "next_shell": "Next Image/Link, query layer and editor API stubbed; real component and domain source compiled with TypeScript",
+    "geometry": "synthetic 768-seat fixture; user live data unavailable"
+  },
+  "passed": 22,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "Original map freeze reproduced after effect cleanup/setup replay",
+      "passed": true,
+      "detail": {
+        "camera_before": {
+          "scale": 1,
+          "x": 0,
+          "y": 0,
+          "height": 625
+        },
+        "camera_after_plus": {
+          "scale": 1,
+          "x": 0,
+          "y": 0,
+          "height": 625
+        },
+        "effect_replays": 1
+      }
+    },
+    {
+      "name": "Original INVALID_SEAT_LABEL reproduced on an empty imported row",
+      "passed": true,
+      "detail": "Original SeatWorkspace throws for an imported empty row."
+    },
+    {
+      "name": "Fixed map fits on mount and respects a cached image aspect ratio",
+      "passed": true,
+      "detail": {
+        "scale": 0.886667013168335,
+        "x": 195.66700744628906,
+        "y": 24,
+        "height": 600
+      }
+    },
+    {
+      "name": "Inactive map does not take the page mouse wheel",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Plus/minus update both image transform and actual Canvas pixels",
+      "passed": true,
+      "detail": {
+        "before": {
+          "scale": 0.886667013168335,
+          "x": 195.66700744628906,
+          "y": 24,
+          "height": 600
+        },
+        "zoomed": {
+          "scale": 1.3300000429153442,
+          "x": -26,
+          "y": -109,
+          "height": 600
+        }
+      }
+    },
+    {
+      "name": "Real mouse drag moves the map and does not select seats",
+      "passed": true,
+      "detail": {
+        "before": {
+          "scale": 1.9950000047683716,
+          "x": -358.5,
+          "y": -308.5,
+          "height": 600
+        },
+        "after_drag": {
+          "scale": 1.9950000047683716,
+          "x": -278.5,
+          "y": -258.5,
+          "height": 600
+        }
+      }
+    },
+    {
+      "name": "Real wheel zoom is anchored at the cursor",
+      "passed": true,
+      "detail": {
+        "before": {
+          "scale": 1.9950000047683716,
+          "x": -278.5,
+          "y": -258.5,
+          "height": 600
+        },
+        "after_wheel": {
+          "scale": 3.0976500511169434,
+          "x": -749.958984375,
+          "y": -561.6599731445312,
+          "height": 600
+        }
+      }
+    },
+    {
+      "name": "Double click zooms the live component",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Keyboard pan and Escape release work",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fit/reset restores the whole arena",
+      "passed": true,
+      "detail": {
+        "scale": 0.886667013168335,
+        "x": 195.66700744628906,
+        "y": 24,
+        "height": 600
+      }
+    },
+    {
+      "name": "Selecting a sector changes the camera",
+      "passed": true,
+      "detail": {
+        "scale": 4.195650100708008,
+        "x": -359.56500244140625,
+        "y": -95.16089630126953,
+        "height": 600
+      }
+    },
+    {
+      "name": "Clicking a zoomed seat opens its correct details and selection works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unavailable seat cannot be added through the inspector",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stock rerender preserves the camera and API geometry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unmount/remount leaves camera scheduling operational",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Resize does not freeze subsequent camera updates",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Two real touch contacts pinch-zoom the mobile map",
+      "passed": true,
+      "detail": {
+        "before": {
+          "scale": 0.30000001192092896,
+          "x": 24,
+          "y": 142,
+          "height": 600
+        },
+        "after": {
+          "scale": 0.6085709929466248,
+          "x": -130.28599548339844,
+          "y": 49.4286003112793,
+          "height": 600
+        }
+      }
+    },
+    {
+      "name": "One-finger drag moves an activated mobile map",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cancelled touch does not inspect a random seat or lock controls",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Editor renders all imported seats with diagnostics, without autosaving",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "One invalid seat can be corrected while another is still incomplete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Save submits only the corrected seat and expected_version; no mass renumbering",
+      "passed": true,
+      "detail": {
+        "expected_version": 7,
+        "create": [],
+        "update": [
+          {
+            "id": "bad-row",
+            "sector": "101",
+            "row": "10",
+            "number": "9",
+            "x": "0.200000",
+            "y": "0.300000",
+            "adjacency_group": "",
+            "adjacency_position": null
+          }
+        ],
+        "delete": []
+      }
+    }
+  ]
+}

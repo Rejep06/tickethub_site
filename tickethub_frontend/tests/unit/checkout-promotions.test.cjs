@@ -1,0 +1,28 @@
+const {test} = require('node:test');
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const {normalizedPromoCode, validPromoCode, promoMatchesHold, orderPromoFields} = require(path.join(process.env.TH_TEST_BUILD, 'lib/promotions.js'));
+const {canCheckout, intakeMessage} = require(path.join(process.env.TH_TEST_BUILD, 'lib/checkout-policy.js'));
+const hold = {id:'hold-a', total_minor:200000};
+const quote = {hold_id:'hold-a', code:'MATCH10', promo_version:4, subtotal_minor:200000, discount_minor:20000, total_minor:180000, currency:'RUB'};
+test('Manual checkout remains open with online payments disabled',()=>assert.equal(canCheckout({order_intake_enabled:true,online_payments_enabled:false},{orderable:true}),true));
+test('Availability cannot be bypassed by enabling payments',()=>assert.equal(canCheckout({order_intake_enabled:true,online_payments_enabled:true},{orderable:false}),false));
+test('Intentional intake switch is respected',()=>assert.equal(canCheckout({order_intake_enabled:false},{orderable:true}),false));
+test('Loading config does not invent checkout availability',()=>assert.equal(canCheckout(null,{orderable:true}),false));
+test('Intake message distinguishes documents from inventory',()=>assert.equal(intakeMessage({legal_ready:false,order_intake_enabled:false},{}),'error_LEGAL_NOT_READY'));
+for(const code of ['EVENT_CLOSED','EVENT_STARTED','SALES_CLOSED']) test('Exact closed reason '+code,()=>assert.equal(intakeMessage({order_intake_enabled:true},{reason_code:code}),'error_'+code));
+test('Codes are case-insensitive with outer whitespace ignored',()=>assert.equal(normalizedPromoCode(' match10 '),'MATCH10'));
+for(const code of ['AB','x y','тест10','ABC!', 'A'.repeat(41)]) test('Invalid promo shape '+code,()=>assert.equal(validPromoCode(code),false));
+test('Allowed code punctuation is not stripped',()=>assert.equal(validPromoCode('match-10_2026'),true));
+test('Promo must belong to this hold',()=>assert.equal(promoMatchesHold({...quote,hold_id:'other'},hold,'MATCH10'),false));
+test('Changed subtotal requires new preview',()=>assert.equal(promoMatchesHold(quote,{...hold,total_minor:200001},'MATCH10'),false));
+test('Changing typed code invalidates old quote',()=>assert.equal(promoMatchesHold(quote,hold,'MATCH11'),false));
+test('Inconsistent server totals cannot be submitted',()=>assert.equal(promoMatchesHold({...quote,total_minor:1},hold,'MATCH10'),false));
+test('Promo must have positive discount and total',()=>{
+ assert.equal(promoMatchesHold({...quote,discount_minor:0,total_minor:200000},hold,'MATCH10'),false);
+ assert.equal(promoMatchesHold({...quote,discount_minor:200000,total_minor:0},hold,'MATCH10'),false);
+});
+test('Order uses quoted discount/version and server net total',()=>assert.deepEqual(orderPromoFields(hold,{code:' match10 ',quote}),{promo_code:'MATCH10',expected_promo_version:4,expected_discount_minor:20000,expected_total_minor:180000}));
+test('Typing a code without applying cannot silently submit full price',()=>assert.throws(()=>orderPromoFields(hold,{code:'MATCH10',quote:null}),/PROMO_APPLY_REQUIRED/));
+test('Explicitly removing code restores gross total',()=>assert.deepEqual(orderPromoFields(hold,{code:'',quote:null}),{expected_total_minor:200000}));
+test('Matching quote accepts integer RUB only',()=>assert.equal(promoMatchesHold({...quote,currency:'USD'},hold,'MATCH10'),false));
