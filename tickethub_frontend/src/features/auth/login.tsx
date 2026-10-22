@@ -62,44 +62,44 @@ export function Login({ staff = false, inline = false, onAuthenticated }: {
         }
     }
     return <div className={inline ? 'auth-inline' : 'container section'}><div className={inline ? '' : staff ? 'narrow' : 'auth-layout'}>
-    {!staff && !inline && <aside className="auth-illustration">
-      <div className="auth-brand"><Logo /><ArrowUpRight size={28} /></div><div className="auth-orbit" aria-hidden="true" />
-      <div className="stack">
-        <h2>{t('accountWelcome')}</h2>
-        <p>{t('accountText')}</p><div className="auth-benefits">{[1, 2, 3].map(n => <div key={n}><Check size={17} />{t('authBenefit' + n)}</div>)}</div>
-      </div>
-    </aside>}
-    <div className="auth-form stack">
-      {inline ? <p>{t('authText')}</p> : <PageHeader title={staff ? 'Вход сотрудника' : t('authTitle')} description={staff ? 'Рабочая панель Tickethub. Вход по паролю.' : t('authText')}/>}
-      {task.error && <ErrorState error={task.error}/>}
-      <>{!email || staff ? <form className="stack" onSubmit={emailForm.handleSubmit(values => task.run(async () => {
-        if (staff) {
-            await authApi.staffLogin({ email: values.email, password: values.password });
-            emailForm.resetField('password');
-            await afterLogin();
-        }
-        else
-            await send(values.email);
-    }))}>
-        <Field label={t('email')} error={emailForm.formState.errors.email?.message}><Input {...emailForm.register('email')} type="email" autoComplete="email" aria-invalid={!!emailForm.formState.errors.email} required/></Field>
-        {staff && <Field label="Пароль" error={emailForm.formState.errors.password?.message}><Input {...emailForm.register('password')} type="password" autoComplete="current-password" required/></Field>}
-        <Button type="submit" busy={task.busy} disabled={!staff && seconds > 0}>{staff ? 'Войти в панель' : t('sendCode')}</Button>
-      </form> : <form className="stack" onSubmit={codeForm.handleSubmit(values => task.run(async () => {
-        const profile = await authApi.verifyCode({ email, code: values.code, locale: lang });
-        codeForm.reset();
-        await afterLogin(profile);
-    }))}>
-        <p>{t('codeSent', { email })}</p>
-        <Field label={t('code')} error={codeForm.formState.errors.code?.message}><Input {...codeForm.register('code')} className="code-input" inputMode="numeric" autoComplete="one-time-code" maxLength={6} pattern="[0-9]{6}" autoFocus required/></Field>
-        <Button type="submit" busy={task.busy}>{t('verifyCode')}</Button>
-        <Button variant="secondary" type="button" disabled={seconds > 0} busy={task.busy} onClick={() => void task.run(() => send(email))}>{seconds > 0 ? t('resendIn', { seconds }) : t('resend')}</Button>
-        <Button variant="ghost" type="button" disabled={task.busy} onClick={() => {
-        setEmail('');
-        codeForm.reset();
-        task.setError(null);
-    }}>{t('changeEmail')}</Button>
-      </form>}</>
-      {staff && <div className="staff-login-note"><span className="muted">Рабочее пространство команды Tickethub</span><ThemeToggle /></div>}
-    </div>
-  </div></div>;
+        {!staff && !inline && <aside className="auth-illustration">
+            <div className="auth-brand"><Logo /><ArrowUpRight size={28} /></div><div className="auth-orbit" aria-hidden="true" />
+            <div className="stack">
+                <h2>{t('accountWelcome')}</h2>
+                <p>{t('accountText')}</p><div className="auth-benefits">{[1, 2, 3].map(n => <div key={n}><Check size={17} />{t('authBenefit' + n)}</div>)}</div>
+            </div>
+        </aside>}
+        <div className="auth-form stack">
+            {inline ? <p>{t('authText')}</p> : <PageHeader title={staff ? 'Вход сотрудника' : t('authTitle')} description={staff ? 'Рабочая панель Tickethub. Вход по паролю.' : t('authText')} />}
+            {task.error ? <ErrorState error={task.error} /> : null}
+            <>{!email || staff ? <form className="stack" onSubmit={emailForm.handleSubmit(values => task.run(async () => {
+                if (staff) {
+                    await authApi.staffLogin({ email: values.email, password: values.password });
+                    emailForm.resetField('password');
+                    await afterLogin();
+                }
+                else
+                    await send(values.email);
+            }))}>
+                <Field label={t('email')} error={emailForm.formState.errors.email?.message}><Input {...emailForm.register('email')} type="email" autoComplete="email" aria-invalid={!!emailForm.formState.errors.email} required /></Field>
+                {staff && <Field label="Пароль" error={emailForm.formState.errors.password?.message}><Input {...emailForm.register('password')} type="password" autoComplete="current-password" required /></Field>}
+                <Button type="submit" busy={task.busy} disabled={!staff && seconds > 0}>{staff ? 'Войти в панель' : t('sendCode')}</Button>
+            </form> : <form className="stack" onSubmit={codeForm.handleSubmit(values => task.run(async () => {
+                const profile = await authApi.verifyCode({ email, code: values.code, locale: lang });
+                codeForm.reset();
+                await afterLogin(profile);
+            }))}>
+                <p>{t('codeSent', { email })}</p>
+                <Field label={t('code')} error={codeForm.formState.errors.code?.message}><Input {...codeForm.register('code')} className="code-input" inputMode="numeric" autoComplete="one-time-code" maxLength={6} pattern="[0-9]{6}" autoFocus required /></Field>
+                <Button type="submit" busy={task.busy}>{t('verifyCode')}</Button>
+                <Button variant="secondary" type="button" disabled={seconds > 0} busy={task.busy} onClick={() => void task.run(() => send(email))}>{seconds > 0 ? t('resendIn', { seconds }) : t('resend')}</Button>
+                <Button variant="ghost" type="button" disabled={task.busy} onClick={() => {
+                    setEmail('');
+                    codeForm.reset();
+                    task.setError(null);
+                }}>{t('changeEmail')}</Button>
+            </form>}</>
+            {staff && <div className="staff-login-note"><span className="muted">Рабочее пространство команды Tickethub</span><ThemeToggle /></div>}
+        </div>
+    </div></div>;
 }
