@@ -11,8 +11,13 @@ export async function publicApi<T>(path: string, locale?: ApiLocale): Promise<T>
     const timer = setTimeout(() => controller.abort(), 8000);
     try {
         return await readResponse<T>(await fetch(url, {
-            headers: { Accept: 'application/json', 'Accept-Language': language },
-            cache: 'no-store', signal: controller.signal
+            headers: {
+                Accept: 'application/json',
+                'Accept-Language': language,
+                'X-Forwarded-Proto': 'https'
+            },
+            cache: 'no-store',
+            signal: controller.signal
         }));
     } finally {
         clearTimeout(timer);
